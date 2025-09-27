@@ -1,40 +1,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player
+public class Player: MonoBehaviour
 {
-    public string Name { get; private set; }
-    public bool IsBot { get; private set; }
+    public string Name { get; set; }
+    public bool IsBot { get; set; }
 
     // Where the player sits in the scene
     public Vector3 BasePosition { get; set; }
     public Quaternion BaseRotation { get; set; }
 
     // Cards this player is holding (FIFO)
-    private readonly Queue<Card> hand = new Queue<Card>();
+    private Queue<Card> hand;
 
     // For reaction timing (especially for bots)
     public float ReactionTimer { get; set; }
 
-    public Player(string name, bool isBot, Vector3 position, Quaternion rotation)
+    void Awake()
     {
-        Name = name;
-        IsBot = isBot;
-        BasePosition = position;
-        BaseRotation = rotation;
+        hand = new Queue<Card>();
     }
 
     // ➕ Add a card to the player’s hand
     public void AddCard(Card card)
     {
-        if (card != null)
-            hand.Enqueue(card);
+        hand.Enqueue(card);
+        card.gameObject.SetActive(true);
+        card.transform.SetParent(this.transform);
     }
 
     // Draw top card from hand
     public Card DrawCard()
     {
-        return hand.Count > 0 ? hand.Dequeue() : null;
+        if (hand.Count > 0)
+            return hand.Dequeue();
+        return null;
     }
 
     // Peek at top card (no removal)
@@ -57,6 +57,26 @@ public class Player
 
         Debug.Log($"{Name} slapped incorrectly!");
         return false;
+    }
+
+    public void ArrangeHand()
+    {
+        int i = 0;
+        float spacing = 0.8f;
+
+        Vector3 offset = Vector3.zero;
+        if (BasePosition.y > 0) offset = new Vector3(0, -0.5f, 0);
+        if (BasePosition.y < 0) offset = new Vector3(0, 0.5f, 0);
+        if (BasePosition.x > 0) offset = new Vector3(-0.5f, 0, 0);
+        if (BasePosition.x < 0) offset = new Vector3(0.5f, 0, 0);
+
+        foreach (Card card in hand)
+        {
+            card.transform.localPosition = offset + new Vector3(i * spacing, 0, 0);
+            card.transform.localRotation = Quaternion.identity;
+            card.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+            i++;
+        }
     }
 
     // Number of cards left

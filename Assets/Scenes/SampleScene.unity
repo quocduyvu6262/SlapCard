@@ -440,13 +440,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 949509385}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10582b4c8fc1c4a8cb0ff39efd46c5e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 1bacd6d715cbd4eb88d11e7896a83773, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SlapCard
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
   cardFolderPath: Asset_PlayingCards/Prefabs/Deck01
   cardPrefabs: []
-  columns: 13
-  spacing: {x: 0.2, y: 0.2}
+  playerPrefab: {fileID: 0}
+  tableCenter: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

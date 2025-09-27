@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     [Header("Deck Prefabs")]
     public GameObject[] cardPrefabs; // Drag all 52 card prefabs here
     private List<Card> deck = new List<Card>();
+    public GameObject playerPrefab;
     private List<Player> players = new List<Player>();
 
     [Header("Player Setup")]
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         cardPrefabs = Resources.LoadAll<GameObject>(cardFolderPath);
+        playerPrefab = Resources.Load<GameObject>("PlayerPrefab");
+
         InitDeck();
         CreatePlayers();
         DealCards();
@@ -47,10 +50,10 @@ public class GameManager : MonoBehaviour
 
         // Positions around table (top, right, bottom, left)
         Vector3[] positions = {
-            new Vector3(0, -4, 0),
-            new Vector3(6, 0, 0),
-            new Vector3(0, 4, 0),
-            new Vector3(-6, 0, 0)
+            new Vector3(0, -5, -1),
+            new Vector3(9f, 0, -1),
+            new Vector3(0, 5, -1),
+            new Vector3(-9f, 0, -1)
         };
 
         Quaternion[] rotations = {
@@ -60,25 +63,50 @@ public class GameManager : MonoBehaviour
             Quaternion.Euler(0,0,270)
         };
 
-        players.Add(new Player("You", false, positions[0], rotations[0]));
-        players.Add(new Player("Bot A", true, positions[1], rotations[1]));
-        players.Add(new Player("Bot B", true, positions[2], rotations[2]));
-        players.Add(new Player("Bot C", true, positions[3], rotations[3]));
+        string[] names = { "You", "Bot A", "Bot B", "Bot C" };
+        bool[] isBot = { false, true, true, true };
 
-        Debug.Log("Players created");
+        for (int i = 0; i < 4; i++)
+        {
+            // Instantiate prefab at desired position/rotation
+            GameObject playerObj = Instantiate(playerPrefab, positions[i], rotations[i]);
+            playerObj.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+            Player playerComp = playerObj.GetComponent<Player>();
+
+            // Set player data
+            playerComp.Name = names[i];
+            playerComp.IsBot = isBot[i];
+            playerComp.BasePosition = positions[i];
+            playerComp.BaseRotation = rotations[i];
+
+            // Add to your list
+            players.Add(playerComp);
+        }
+
+        Debug.Log("Players created and spawned in scene");
     }
 
     private void DealCards()
     {
-        int playerIndex = 0;
-        foreach (Card card in deck)
-        {
-            players[playerIndex].AddCard(card);
-            playerIndex = (playerIndex + 1) % players.Count;
-        }
+        int cardsPerPlayer = 13; // 52 cards / 4 players
+        int deckIndex = 0;
 
+        for (int round = 0; round < cardsPerPlayer; round++)
+        {
+            foreach (Player player in players)
+            {
+                if (deckIndex >= deck.Count) break;
+
+                Card card = deck[deckIndex++];
+                player.AddCard(card);       // adds to queue & sets parent
+            }
+        }
+        Debug.Log(players.Count);
+        // After dealing, arrange each player's hand visually
         foreach (Player p in players)
         {
+            Debug.Log("Here");
+            p.ArrangeHand();
             Debug.Log($"{p.Name} has {p.CardCount} cards");
         }
     }
