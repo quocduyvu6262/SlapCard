@@ -61,22 +61,26 @@ public class Player: MonoBehaviour
 
     public void ArrangeHand()
     {
-        int i = 0;
-        float spacing = 0.8f;
+        Vector3 handOffset = Vector3.zero;
+        handOffset = new Vector3(-3f, 2f, 0);
 
-        Vector3 offset = Vector3.zero;
-        if (BasePosition.y > 0) offset = new Vector3(0, -0.5f, 0);
-        if (BasePosition.y < 0) offset = new Vector3(0, 0.5f, 0);
-        if (BasePosition.x > 0) offset = new Vector3(-0.5f, 0, 0);
-        if (BasePosition.x < 0) offset = new Vector3(0.5f, 0, 0);
+        int i = 0;
+        // A very small Z offset for each card to create a 3D stack and prevent visual flickering (Z-fighting).
+        float zOffsetPerCard = -0.01f;
 
         foreach (Card card in hand)
         {
-            card.transform.localPosition = offset + new Vector3(i * spacing, 0, 0);
+            card.transform.SetParent(this.transform);
+            card.transform.localPosition = handOffset + new Vector3(i*(-0.02f),0,i*zOffsetPerCard);
             card.transform.localRotation = Quaternion.identity;
-            card.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+            card.transform.localScale = new Vector3(1.5f, 1.5f, 1f);
             i++;
         }
+    }
+
+    bool SameRotation(Quaternion a, Quaternion b)
+    {
+        return Quaternion.Dot(a, b) > 0.9999f; // threshold for tolerance
     }
 
     // Number of cards left

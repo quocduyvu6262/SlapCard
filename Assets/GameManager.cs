@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
                 player.AddCard(card);       // adds to queue & sets parent
             }
         }
-        Debug.Log(players.Count);
+
         // After dealing, arrange each player's hand visually
         foreach (Player p in players)
         {
