@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections;
 
 public enum CardSuit
 {
@@ -17,8 +18,13 @@ public enum CardRank
 
 public class Card : MonoBehaviour
 {
+    private bool isFaceUp = false;
     public CardSuit Suit { get; private set; }
     public CardRank Rank { get; private set; }
+
+    private Quaternion faceUpRotation = Quaternion.Euler(0, 0, 0);
+    private Quaternion faceDownRotation = Quaternion.Euler(0, 180, 0);
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -56,6 +62,57 @@ public class Card : MonoBehaviour
     void Update()
     {
         
+    }
+
+    // --- OPTION 1: INSTANT FLIP ---
+
+    // Instantly flips the card to the target state
+    public void FlipInstant()
+    {
+        isFaceUp = !isFaceUp;
+        transform.localRotation = isFaceUp ? faceUpRotation : faceDownRotation;
+    }
+
+    // Instantly sets the card face up or down
+    public void ShowFaceInstant(bool show)
+    {
+        isFaceUp = show;
+        transform.localRotation = isFaceUp ? faceUpRotation : faceDownRotation;
+    }
+
+
+    // --- OPTION 2: ANIMATED FLIP (SMOOTHER) ---
+    
+    // Smoothly animates the card flip over a short duration
+    public void FlipAnimated(float duration = 0.3f)
+    {
+        isFaceUp = !isFaceUp;
+        StopAllCoroutines(); // Stop any existing flip animations
+        StartCoroutine(FlipCoroutine(isFaceUp ? faceUpRotation : faceDownRotation, duration));
+    }
+    
+    public void ShowFaceAnimated(bool show, float duration = 0.3f)
+    {
+        isFaceUp = show;
+        StopAllCoroutines();
+        StartCoroutine(FlipCoroutine(isFaceUp ? faceUpRotation : faceDownRotation, duration));
+    }
+
+    private IEnumerator FlipCoroutine(Quaternion targetRotation, float duration)
+    {
+        Quaternion startRotation = transform.localRotation;
+        float time = 0;
+
+        while (time < duration)
+        {
+            // Slerp (Spherical Linear Interpolation) smoothly rotates between two Quaternions
+            transform.localRotation = Quaternion.Slerp(startRotation, targetRotation, time / duration);
+            time += Time.deltaTime;
+            yield return null; // Wait for the next frame
+        }
+
+        // Ensure the final rotation is exact
+        transform.localRotation = targetRotation;
     }
 
     public void PrintCard()

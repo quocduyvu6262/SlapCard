@@ -74,6 +74,7 @@ public class Player: MonoBehaviour
             card.transform.localPosition = handOffset + new Vector3(i*(-0.02f),0,i*zOffsetPerCard);
             card.transform.localRotation = Quaternion.identity;
             card.transform.localScale = new Vector3(1.5f, 1.5f, 1f);
+            card.ShowFaceInstant(false);
             i++;
         }
     }

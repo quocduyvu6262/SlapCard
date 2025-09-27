@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour
         DealCards();
     }
 
+    void Update() {
+        
+    }
+
     private void InitDeck()
     {
         deck.Clear();
