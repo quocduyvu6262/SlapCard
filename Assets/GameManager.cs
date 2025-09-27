@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,7 +25,7 @@ public class GameManager : MonoBehaviour
     }
 
     void Update() {
-        
+
     }
 
     private void InitDeck()
@@ -34,7 +35,8 @@ public class GameManager : MonoBehaviour
         // Turn prefabs into card objects
         foreach (GameObject prefab in cardPrefabs)
         {
-            GameObject cardObj = Instantiate(prefab, this.transform);
+            GameObject cardObj = Instantiate(prefab);
+            cardObj.name = prefab.name;
             Card card = cardObj.GetComponent<Card>();
 
             if (card != null)
@@ -109,9 +111,60 @@ public class GameManager : MonoBehaviour
         // After dealing, arrange each player's hand visually
         foreach (Player p in players)
         {
-            Debug.Log("Here");
             p.ArrangeHand();
             Debug.Log($"{p.Name} has {p.CardCount} cards");
+        }
+    }
+
+    private IEnumerator DealCardsAnimated() 
+    {
+        int cardsPerPlayer = 13;
+        float dealDelay = 0.2f;
+
+        for (int round = 0; round < cardsPerPlayer; round++)
+        {
+            for (int i = 0; i < players.Count; i ++)
+            {
+                if (deck.Count == 0) yield break;
+                Card card = deck[0];
+                deck.RemoveAt(0);
+
+                // Activate and start at table center
+                card.gameObject.SetActive(true);
+                card.transform.position = tableCenter.position;
+                card.transform.localScale = new Vector3(0.2f, 0.2f, 1f);
+
+                // Animate move to player
+                yield return StartCoroutine(MoveCardToPlayer(card, players[i]));
+
+                // Add card to player’s hand after it arrives
+                players[i].AddCard(card);
+
+                yield return new WaitForSeconds(dealDelay);
+            }
+        }
+
+        // After dealing, arrange each player's hand visually
+        foreach (Player p in players)
+        {
+            p.ArrangeHand();
+            Debug.Log($"{p.Name} has {p.CardCount} cards");
+        }
+    }
+    
+    private IEnumerator MoveCardToPlayer(Card card, Player player)
+    {
+        Vector3 start = tableCenter.position;
+        Vector3 end = player.BasePosition + new Vector3(0, 0.5f, 0); // small offset
+
+        float t = 0f;
+        float duration = 0.3f; // smooth move time
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime / duration;
+            card.transform.position = Vector3.Lerp(start, end, t);
+            yield return null;
         }
     }
 
