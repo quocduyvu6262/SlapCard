@@ -10,15 +10,17 @@ public class GamePlay : MonoBehaviour
     private CenterPile centerPile;
     private List<Card> pile;
 
+    private int activeBotSlaps = 0;
+
     [Tooltip("The time in seconds between each card being played.")]
-    public float playSpeed = 1f;
+    public float playSpeed = 0.5f;
 
     [Header("Audio")]
     public AudioClip cardPlaySound;
     public AudioClip slapSound;
     private AudioSource audioSource;
 
-
+    private HashSet<Player> playersWithNoCards = new HashSet<Player>();
 
     // reference the script
     void Awake()
@@ -70,7 +72,26 @@ public class GamePlay : MonoBehaviour
                     if (CheckForSlapCondition())
                     {
                         TriggerBotSlaps();
-                        yield return new WaitForSeconds(2f);
+                        yield return new WaitUntil(() => activeBotSlaps == 0);
+                    }
+
+                    if (!currentPlayer.HasCards)
+                    {
+                        playersWithNoCards.Add(currentPlayer);
+                        Debug.Log(currentPlayer + " has no cards left. Eliminated.");
+                        if (playersWithNoCards.Count == 3)
+                        {
+                            string winner = "";
+                            foreach (Player p in players)
+                            {
+                                if (p.HasCards)
+                                {
+                                    winner = p.name;
+                                }
+                            }
+                            Debug.Log("Game finished, player: " + winner + " got all 52 cards");
+                            yield break;
+                        }
                     }
                 }
 
@@ -96,7 +117,7 @@ public class GamePlay : MonoBehaviour
 
         // Get the top card
         Card topCard = pile[pile.Count - 1];
-        Debug.Log($"Checking Card. Name: {topCard.Rank.ToString()}, Integer Value: {(int)topCard.Rank}");
+        // Debug.Log($"Checking Card. Name: {topCard.Rank.ToString()}, Integer Value: {(int)topCard.Rank}");
 
         // Condition 1: Is the top card a Jack, Queen, or King?
         if (topCard.Rank == CardRank.Jack || topCard.Rank == CardRank.Queen || topCard.Rank == CardRank.King)
@@ -175,6 +196,7 @@ public class GamePlay : MonoBehaviour
 
     private IEnumerator BotSlapRoutine(Player bot)
     {
+        activeBotSlaps++;
         // Wait for a random time based on the bot's reaction speed
         float delay = Random.Range(bot.botReactionTime - 0.2f, bot.botReactionTime + 0.2f);
         yield return new WaitForSeconds(delay);
@@ -185,6 +207,7 @@ public class GamePlay : MonoBehaviour
         {
             HandleBotSlap(bot);
         }
+        activeBotSlaps--;
     }
     private void HandleBotSlap(Player bot)
     {

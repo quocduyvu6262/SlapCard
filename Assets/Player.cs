@@ -1,11 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
     public string Name { get; set; }
     public bool IsBot { get; set; }
     public float botReactionTime = 4.0f;
+
+    [Tooltip("The UI Text element for displaying the card count.")]
+    public TextMeshProUGUI cardCountText;
 
     // Where the player sits in the scene
     public Vector3 BasePosition { get; set; }
@@ -22,19 +26,35 @@ public class Player : MonoBehaviour
         hand = new Queue<Card>();
     }
 
+    /// <summary>
+    /// Updates the UI text to show the current number of cards in hand.
+    /// </summary>
+    public void UpdateCardCountUI()
+    {
+        if (cardCountText != null)
+        {
+            cardCountText.text = hand.Count.ToString();
+        }
+    }
+
     // ➕ Add a card to the player’s hand
     public void AddCard(Card card)
     {
         hand.Enqueue(card);
         card.gameObject.SetActive(true);
         card.transform.SetParent(this.transform);
+        UpdateCardCountUI();
     }
 
     // Draw top card from hand
     public Card DrawCard()
     {
         if (hand.Count > 0)
-            return hand.Dequeue();
+        {
+            Card drawnCard = hand.Dequeue();
+            UpdateCardCountUI();
+            return drawnCard;
+        }
         return null;
     }
 
@@ -94,6 +114,7 @@ public class Player : MonoBehaviour
 
         // After adding cards, it's good practice to tidy up the visual stack
         ArrangeHand();
+        UpdateCardCountUI();
     }
 
     bool SameRotation(Quaternion a, Quaternion b)

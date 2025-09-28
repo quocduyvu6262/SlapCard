@@ -91,6 +91,12 @@ public class GameManager : MonoBehaviour
             playerComp.BasePosition = positions[i];
             playerComp.BaseRotation = rotations[i];
 
+            Transform uiAnchor = playerObj.transform.Find("UIAnchor");
+            if (uiAnchor != null)
+            {
+                uiAnchor.localRotation = Quaternion.Inverse(playerObj.transform.rotation);
+            }
+
             // Add to your list
             players.Add(playerComp);
         }
