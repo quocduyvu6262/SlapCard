@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GamePlay : MonoBehaviour
 {
@@ -301,9 +302,17 @@ public class GamePlay : MonoBehaviour
     private void EndGame(bool playerWon)
     {
         if (playerWon)
+        {
             Debug.Log("🎉 You win!");
+            StopAllCoroutines();
+            SceneManager.LoadScene(3);
+        }
         else
+        {
             Debug.Log("💀 You lost!");
+            StopAllCoroutines();
+            SceneManager.LoadScene(4);
+        }
 
         StopAllCoroutines();
     }
