@@ -189,7 +189,8 @@ public class GamePlay : MonoBehaviour
         else
         {
             // 3B. INCORRECT SLAP: Player loses one health
-            LoseLife();
+            if (centerPile.pile.Count > 0)
+                LoseLife();
             Debug.Log(humanPlayer.Name + " slapped incorrectly! You lose a life.");
             // if (humanPlayer.HasCards)
             // {
