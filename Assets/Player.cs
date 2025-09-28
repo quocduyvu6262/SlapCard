@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -64,6 +65,37 @@ public class Player : MonoBehaviour
         return null;
     }
 
+    public IEnumerator DrawCardWithAnimation(CenterPile centerPile, float grabDelay = 0.2f, float moveDuration = 0.3f)
+    {
+        // Switch to grabbing hand
+        SetHandGrabbing(true);
+
+        StartCoroutine(AnimateHandGrab(new Vector3(0, 1f, 0), grabDelay));
+
+        // Wait for grabbing animation
+        yield return new WaitForSeconds(grabDelay);
+
+        // Draw the card
+        if (hand.Count == 0) yield break;
+        Card card = hand.Dequeue();
+        card.gameObject.SetActive(true);
+
+        // Animate card to center pile
+        yield return StartCoroutine(card.MoveCardSmooth(
+            BasePosition,
+            centerPile.transform.position + new Vector3(0, 0.5f, 0),
+            card.transform.rotation,
+            Quaternion.identity,
+            moveDuration
+        ));
+
+        // Add card to center pile
+        centerPile.AddCard(card);
+
+        // Switch back to default hand
+        SetHandGrabbing(false);
+    }
+
     // Peek at top card (no removal)
     public Card PeekCard()
     {
@@ -127,13 +159,43 @@ public class Player : MonoBehaviour
     {
         return Quaternion.Dot(a, b) > 0.9999f; // threshold for tolerance
     }
-    
+
     public void SetHandGrabbing(bool isGrabbing)
     {
         if (handRenderer != null)
         {
             handRenderer.sprite = isGrabbing ? grabbingHand : defaultHand;
         }
+    }
+
+    public IEnumerator AnimateHandGrab(Vector3 targetOffset, float grabDuration = 0.3f)
+    {
+        if (handRenderer == null) yield break;
+
+        Vector3 startPos = handRenderer.transform.localPosition;
+        Vector3 endPos = startPos + targetOffset;
+
+        float t = 0f;
+        SetHandGrabbing(true);
+
+        // Move hand to grab
+        while (t < 1f)
+        {
+            t += Time.deltaTime / grabDuration;
+            handRenderer.transform.localPosition = Vector3.Lerp(startPos, endPos, t);
+            yield return null;
+        }
+
+        // Move hand back
+        t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime / grabDuration;
+            handRenderer.transform.localPosition = Vector3.Lerp(endPos, startPos, t);
+            yield return null;
+        }
+
+        SetHandGrabbing(false);
     }
 
     // Number of cards left

@@ -60,8 +60,9 @@ public class GamePlay : MonoBehaviour
                 // Only play a card if the player still has some
                 if (currentPlayer.HasCards)
                 {
-                    Card cardToPlay = currentPlayer.DrawCard();
-                    centerPile.AddCard(cardToPlay);
+                    // Card cardToPlay = currentPlayer.DrawCard();
+                    // centerPile.AddCard(cardToPlay);
+                    yield return StartCoroutine(currentPlayer.DrawCardWithAnimation(centerPile));
                     if (cardPlaySound != null)
                     {
                         audioSource.PlayOneShot(cardPlaySound);

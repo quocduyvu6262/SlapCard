@@ -131,6 +131,27 @@ public class Card : MonoBehaviour
         transform.localRotation = targetRotation;
     }
 
+    public IEnumerator MoveCardSmooth(Vector3 start, Vector3 end, Quaternion startRot, Quaternion endRot, float duration)
+    {
+        float t = 0f;
+        transform.position = start;
+        transform.rotation = startRot;
+
+        Debug.Log(start);
+        Debug.Log(end);
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime / duration;
+            transform.position = Vector3.Lerp(start, end, -1f);
+            transform.rotation = Quaternion.Lerp(startRot, endRot, -1f);
+            yield return null;
+        }
+
+        transform.position = end;
+        transform.rotation = endRot;
+    }
+
     public void PrintCard()
     {
         Debug.Log($"Card: {Rank} of {Suit}");
