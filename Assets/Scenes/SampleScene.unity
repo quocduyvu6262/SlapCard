@@ -340,50 +340,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &817821006
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 817821008}
-  - component: {fileID: 817821007}
-  m_Layer: 0
-  m_Name: CenterPile
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &817821007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 817821006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67c0a71a27a4c44dcaf1e01f754a4ba6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CenterPile
---- !u!4 &817821008
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 817821006}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &949509385
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,6 +352,7 @@ GameObject:
   - component: {fileID: 949509387}
   - component: {fileID: 949509389}
   - component: {fileID: 949509390}
+  - component: {fileID: 949509391}
   m_Layer: 0
   m_Name: GameBoard
   m_TagString: Untagged
@@ -505,6 +462,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99f82fdd5c10faf41a1777f6470f94d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GamePlay
+--- !u!114 &949509391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949509385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c0a71a27a4c44dcaf1e01f754a4ba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CenterPile
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -512,4 +481,3 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 949509388}
-  - {fileID: 817821008}

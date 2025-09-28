@@ -9,25 +9,52 @@ public class GamePlay : MonoBehaviour
     private CenterPile centerPile;
     private Stack<Card> pile;
 
+    [Tooltip("The time in seconds between each card being played.")]
+    public float playSpeed = 0.5f;
+
+
     // reference the script
     void Awake()
     {
         gameManager = GetComponent<GameManager>();
         centerPile = GetComponent<CenterPile>();
-        Debug.Log(centerPile);
         players = gameManager.players;
         pile = centerPile.pile;
     }
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Debug.Log(players.Count);
         Debug.Log(pile.Count);
+        StartCoroutine(PlayCardsRoutine());
     }
 
-    private void InitGame() {
+    /// <summary>
+    /// A continuous loop that has each player play a card in order.
+    /// </summary>
+    private IEnumerator PlayCardsRoutine()
+    {
+        // This loop will run forever until the game ends
+        while (true) 
+        {
+            // Go through each player
+            foreach (Player currentPlayer in players)
+            {
+                // Only play a card if the player still has some
+                if (currentPlayer.HasCards)
+                {
+                    Card cardToPlay = currentPlayer.DrawCard();
+                    centerPile.AddCard(cardToPlay);
 
+                    // You could check for a slap condition here automatically if you wanted
+                    // if(CheckSlapCondition()) { ... }
+                }
+
+                // Wait for a moment before the next player goes
+                yield return new WaitForSeconds(playSpeed);
+            }
+        }
     }
 
     // Update is called once per frame
