@@ -119,7 +119,7 @@ public class Player : MonoBehaviour
     public void ArrangeHand()
     {
         Vector3 handOffset = Vector3.zero;
-        handOffset = new Vector3(0f, 4.5f, 0);
+        handOffset = new Vector3(0f, 1.5f, 0);
 
         int i = 0;
         // A very small Z offset for each card to create a 3D stack and prevent visual flickering (Z-fighting).
