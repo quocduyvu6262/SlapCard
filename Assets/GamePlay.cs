@@ -70,6 +70,7 @@ public class GamePlay : MonoBehaviour
                     if (CheckForSlapCondition())
                     {
                         TriggerBotSlaps();
+                        yield return new WaitForSeconds(2f);
                     }
                 }
 
@@ -95,6 +96,7 @@ public class GamePlay : MonoBehaviour
 
         // Get the top card
         Card topCard = pile[pile.Count - 1];
+        Debug.Log($"Checking Card. Name: {topCard.Rank.ToString()}, Integer Value: {(int)topCard.Rank}");
 
         // Condition 1: Is the top card a Jack, Queen, or King?
         if (topCard.Rank == CardRank.Jack || topCard.Rank == CardRank.Queen || topCard.Rank == CardRank.King)
