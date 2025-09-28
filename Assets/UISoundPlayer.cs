@@ -18,7 +18,12 @@ public class UISoundPlayer : MonoBehaviour
     {
         if (buttonClickSound != null)
         {
-            audioSource.PlayOneShot(buttonClickSound);
+            var go = new GameObject("TmpClickSFX");
+            Object.DontDestroyOnLoad(go);
+            var src = go.AddComponent<AudioSource>();
+            src.spatialBlend = 0f;
+            src.PlayOneShot(buttonClickSound);
+            Object.Destroy(go, buttonClickSound.length);
         }
     }
 
