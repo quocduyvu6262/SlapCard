@@ -38,12 +38,19 @@ public class Card : MonoBehaviour
             {
                 Suit = parsedSuit;
             }
-            else
+
+            string rankString = parts[2];
+
+            // Handle shorthand cases
+            switch (rankString)
             {
-                Debug.LogWarning($"Suit '{parts[1]}' not recognized for {gameObject.name}");
+                case "A": rankString = "Ace"; break;
+                case "J": rankString = "Jack"; break;
+                case "Q": rankString = "Queen"; break;
+                case "K": rankString = "King"; break;
             }
 
-            if (Enum.TryParse(parts[2], true, out CardRank parsedRank))
+            if (Enum.TryParse(rankString, true, out CardRank parsedRank))
             {
                 Rank = parsedRank;
             }
