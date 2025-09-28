@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/buttonBorder.PNG.meta
 guid: 05856c8c74d77ff4ea48363ba9eb93c3
+========
+guid: d65d47c0ffffe3046bae51fcd2e9974f
+>>>>>>>> origin/main:Assets/Resources/Coffee-Icon-by-Zhenstudio-13.jpg.meta
 TextureImporter:
   internalIDToNameTable:
   - first:
