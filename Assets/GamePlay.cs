@@ -31,6 +31,12 @@ public class GamePlay : MonoBehaviour
     public GameObject heartPrefab;
     private List<GameObject> heartIcons = new List<GameObject>();  // The heart template (disabled Image)
 
+    [Header("Timer System")]
+    public float gameDuration = 60f; // total game time in seconds
+    private float remainingTime;
+    public Text timerText;
+
+
     void Awake()
     {
         gameManager = GetComponent<GameManager>();
@@ -49,6 +55,12 @@ public class GamePlay : MonoBehaviour
             heartPrefab.SetActive(false); // Hide template
         }
         CreateHearts();
+
+        // Start timer
+        remainingTime = gameDuration;
+        UpdateTimerUI();
+        StartCoroutine(TimerRoutine());
+
         StartCoroutine(PlayCardsRoutine());
     }
 
@@ -124,37 +136,6 @@ public class GamePlay : MonoBehaviour
             StartCoroutine(HandleSlap());
         }
     }
-
-    private bool CheckForSlapCondition()
-    {
-        if (pile.Count < 1) return false; // Can't slap an empty pile
-
-        // Get the top card
-        Card topCard = pile[pile.Count - 1];
-        // Debug.Log($"Checking Card. Name: {topCard.Rank.ToString()}, Integer Value: {(int)topCard.Rank}");
-
-        // Condition 1: Is the top card a Jack, Queen, or King?
-        if (topCard.Rank == CardRank.Jack || topCard.Rank == CardRank.Queen || topCard.Rank == CardRank.King)
-        {
-            return true;
-        }
-
-        // Condition 2: Is it a pair? (Do the top two cards have the same rank?)
-        if (pile.Count >= 2)
-        {
-            // Temporarily remove the top card to see the one underneath
-            Card actualSecondCard = pile[pile.Count - 2];
-            // Put the top card back
-
-            if (topCard.Rank == actualSecondCard.Rank)
-            {
-                return true;
-            }
-        }
-
-        return false; // No slap condition was met
-    }
-
 
     private IEnumerator HandleSlap()
     {
@@ -242,6 +223,33 @@ public class GamePlay : MonoBehaviour
         bot.AddCardsToHand(wonCards);
     }
 
+    private IEnumerator TimerRoutine()
+    {
+        while (remainingTime > 0)
+        {
+            remainingTime -= Time.deltaTime;
+            UpdateTimerUI();
+            yield return null;
+        }
+
+        remainingTime = 0;
+        UpdateTimerUI();
+
+        // Time's up! Decide the winner
+        DetermineWinnerByCards();
+    }
+
+    private void UpdateTimerUI()
+    {
+        if (timerText != null)
+        {
+            int minutes = Mathf.FloorToInt(remainingTime / 60f);
+            int seconds = Mathf.FloorToInt(remainingTime % 60f);
+            timerText.text = $"{minutes:00}:{seconds:00}";
+        }
+    }
+
+    // Helpers
     private void CreateHearts()
     {
         // Clear old
@@ -286,11 +294,66 @@ public class GamePlay : MonoBehaviour
 
         StopAllCoroutines();
     }
-    
+
     private bool TryClaimPile()
     {
         if (pileClaimed) return false;
         pileClaimed = true;
         return true;
+    }
+
+    private bool CheckForSlapCondition()
+    {
+        if (pile.Count < 1) return false; // Can't slap an empty pile
+
+        // Get the top card
+        Card topCard = pile[pile.Count - 1];
+        // Debug.Log($"Checking Card. Name: {topCard.Rank.ToString()}, Integer Value: {(int)topCard.Rank}");
+
+        // Condition 1: Is the top card a Jack, Queen, or King?
+        if (topCard.Rank == CardRank.Jack || topCard.Rank == CardRank.Queen || topCard.Rank == CardRank.King)
+        {
+            return true;
+        }
+
+        // Condition 2: Is it a pair? (Do the top two cards have the same rank?)
+        if (pile.Count >= 2)
+        {
+            // Temporarily remove the top card to see the one underneath
+            Card actualSecondCard = pile[pile.Count - 2];
+            // Put the top card back
+
+            if (topCard.Rank == actualSecondCard.Rank)
+            {
+                return true;
+            }
+        }
+
+        return false; // No slap condition was met
+    }
+
+    private void DetermineWinnerByCards()
+    {
+        Player winner = null;
+        int maxCards = -1;
+
+        foreach (Player p in players)
+        {
+            if (p.CardCount > maxCards)
+            {
+                maxCards = p.CardCount;
+                winner = p;
+            }
+        }
+
+        if (winner != null)
+        {
+            bool playerWon = !winner.IsBot;
+            EndGame(playerWon);
+        }
+        else
+        {
+            EndGame(false);
+        }
     }
 }

@@ -34,17 +34,17 @@ public class CenterPile : MonoBehaviour
                 if (pile.Count >= 3)
                 {
                     Card thirdCard = pile[pile.Count - 3];
-                    thirdCard.transform.position = new Vector3(0f, 0f, -1f);
+                    thirdCard.transform.position = new Vector3(1.5f, 0f, -1f);
                 }
             }
 
             if (positionLeft)
             {
-                card.transform.position = new Vector3(-0.5f, 0f, -3f);
+                card.transform.position = new Vector3(1f, 0f, -3f);
             }
             else
             {
-                card.transform.position = new Vector3(0f, 0f, -3f);
+                card.transform.position = new Vector3(1.5f, 0f, -3f);
             }
 
             positionLeft = !positionLeft;
