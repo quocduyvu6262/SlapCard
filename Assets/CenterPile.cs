@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class CenterPile: MonoBehaviour
 {
-    public Stack<Card> pile;
+    public List<Card> pile;
+    private bool positionLeft = true;
 
     void Awake()
     {
-        pile = new Stack<Card>();
+        pile = new List<Card>();
     }
 
     // Add a card to the pile
@@ -21,16 +22,30 @@ public class CenterPile: MonoBehaviour
 
             card.transform.position = this.transform.position;
             card.transform.rotation = this.transform.rotation;
+
             Card topCard = PeekTopCard();
             if (topCard) {
-                Vector3 pos = card.transform.position;
-                pos.z = -1f;
+                Vector3 pos = topCard.transform.position;
+                pos.z = -2f;
                 topCard.transform.position = pos;
+
+                if (pile.Count >= 3) {
+                    Card thirdCard = pile[pile.Count - 3];
+                    thirdCard.transform.position = new Vector3(0f,0f,-1f);
+                }
             }
-            card.transform.position = new Vector3(0f,0f,-2f);
+
+            if (positionLeft){
+                card.transform.position = new Vector3(-0.5f,0f,-3f);
+            } else {
+                card.transform.position = new Vector3(0f,0f,-3f);
+            }
+
+            positionLeft = !positionLeft;
+
             card.transform.localScale = originalScale;
 
-            pile.Push(card);
+            pile.Add(card);
             Debug.Log($"Added {card} to center pile");
         }
     }
@@ -38,7 +53,8 @@ public class CenterPile: MonoBehaviour
     // Look at the top card without removing
     public Card PeekTopCard()
     {
-        return pile.Count > 0 ? pile.Peek() : null;
+       Card topCard = pile.Count > 0 ? pile[pile.Count - 1] : null;
+       return topCard;
     }
 
     // Take all cards (e.g., when someone wins a slap)

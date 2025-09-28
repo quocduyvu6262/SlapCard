@@ -7,10 +7,10 @@ public class GamePlay : MonoBehaviour
     private GameManager gameManager;
     private List<Player> players;
     private CenterPile centerPile;
-    private Stack<Card> pile;
+    private List<Card> pile;
 
     [Tooltip("The time in seconds between each card being played.")]
-    public float playSpeed = 0.5f;
+    public float playSpeed = 1f;
 
 
     // reference the script

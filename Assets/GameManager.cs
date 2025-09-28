@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public string cardFolderPath = "Asset_PlayingCards/Prefabs/Deck01";
+    public string cardFolderPath = "Asset_PlayingCards/Prefabs/Deck03";
     [Header("Deck Prefabs")]
     public GameObject[] cardPrefabs; // Drag all 52 card prefabs here
     private List<Card> deck = new List<Card>();
