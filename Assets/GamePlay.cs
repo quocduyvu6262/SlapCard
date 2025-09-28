@@ -9,6 +9,7 @@ public class GamePlay : MonoBehaviour
     private List<Player> players;
     private CenterPile centerPile;
     private List<Card> pile;
+    private bool pileClaimed = false;
 
     private int activeBotSlaps = 0;
 
@@ -22,7 +23,6 @@ public class GamePlay : MonoBehaviour
 
     private HashSet<Player> playersWithNoCards = new HashSet<Player>();
 
-    // reference the script
     void Awake()
     {
         gameManager = GetComponent<GameManager>();
@@ -63,6 +63,7 @@ public class GamePlay : MonoBehaviour
                     // Card cardToPlay = currentPlayer.DrawCard();
                     // centerPile.AddCard(cardToPlay);
                     yield return StartCoroutine(currentPlayer.DrawCardWithAnimation(centerPile));
+                    pileClaimed = false;
                     if (cardPlaySound != null)
                     {
                         audioSource.PlayOneShot(cardPlaySound);
@@ -166,6 +167,7 @@ public class GamePlay : MonoBehaviour
         // 2. CHECK CONDITION: See if the slap was correct.
         if (CheckForSlapCondition())
         {
+            pileClaimed = true;
             // 3A. CORRECT SLAP: Give the pile to the player.
             Debug.Log(humanPlayer.Name + " slapped correctly! You get the pile.");
 
@@ -214,10 +216,12 @@ public class GamePlay : MonoBehaviour
     }
     private void HandleBotSlap(Player bot)
     {
+        if (pileClaimed) return;
         if (slapSound != null)
         {
             audioSource.PlayOneShot(slapSound);
         }
+        pileClaimed = true;
         // The bot's slap is always correct because it only slaps when the condition is true.
         Debug.Log(bot.Name + " slapped correctly! They get the pile.");
 
