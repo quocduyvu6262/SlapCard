@@ -62,10 +62,10 @@ public class GameManager : MonoBehaviour
 
         // Positions around table (top, right, bottom, left)
         Vector3[] positions = {
-            new Vector3(0, -5, -1),
+            new Vector3(1.5f, -5, -1),
             new Vector3(9f, 0, -1),
-            new Vector3(0, 5, -1),
-            new Vector3(-9f, 0, -1)
+            new Vector3(1.5f, 5, -1),
+            new Vector3(-6f, 0, -1)
         };
 
         Quaternion[] rotations = {

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -21,9 +22,22 @@ public class Player : MonoBehaviour
     // For reaction timing (especially for bots)
     public float ReactionTimer { get; set; }
 
+    // Sprite Renderer
+    public SpriteRenderer handRenderer;  // Drag the HandSprite's SpriteRenderer here
+    public SpriteRenderer leftHandRenderer;
+    public Sprite defaultHand;
+    public Sprite grabbingHand;
+
+
     void Awake()
     {
         hand = new Queue<Card>();
+        if (handRenderer != null)
+        {
+            // Make sure hand always renders above cards
+            leftHandRenderer.sortingOrder = 100;
+            handRenderer.sortingOrder = 100;
+        }
     }
 
     /// <summary>
@@ -58,6 +72,28 @@ public class Player : MonoBehaviour
         return null;
     }
 
+    public IEnumerator DrawCardWithAnimation(CenterPile centerPile, float grabDelay = 0.2f, float moveDuration = 0.3f)
+    {
+        yield return new WaitForSeconds(grabDelay);
+
+        // Draw the card
+        if (hand.Count == 0) yield break;
+        Card card = hand.Dequeue();
+        UpdateCardCountUI();
+        card.gameObject.SetActive(true);
+
+        // Animate card to center pile
+        yield return StartCoroutine(card.MoveCardSmooth(
+            BasePosition,
+            centerPile.transform.position + new Vector3(0, 0.5f, 0),
+            card.transform.rotation,
+            Quaternion.identity,
+            moveDuration
+        ));
+
+        centerPile.AddCard(card);
+    }
+
     // Peek at top card (no removal)
     public Card PeekCard()
     {
@@ -83,7 +119,7 @@ public class Player : MonoBehaviour
     public void ArrangeHand()
     {
         Vector3 handOffset = Vector3.zero;
-        handOffset = new Vector3(-3f, 2f, 0);
+        handOffset = new Vector3(0f, 1.5f, 0);
 
         int i = 0;
         // A very small Z offset for each card to create a 3D stack and prevent visual flickering (Z-fighting).
@@ -120,6 +156,48 @@ public class Player : MonoBehaviour
     bool SameRotation(Quaternion a, Quaternion b)
     {
         return Quaternion.Dot(a, b) > 0.9999f; // threshold for tolerance
+    }
+
+    public void SetHandGrabbing(bool isGrabbing)
+    {
+        if (handRenderer != null)
+        {
+            handRenderer.sprite = isGrabbing ? grabbingHand : defaultHand;
+        }
+    }
+
+    public IEnumerator AnimateSlap(CenterPile centerPile, float grabDuration = 0.2f, float handReachDistance = 1f)
+    {
+        if (handRenderer == null || centerPile.IsEmpty) yield break;
+
+        Vector3 startPos = handRenderer.transform.position;
+
+        Vector3 endPos = centerPile.transform.position;
+
+        float t = 0f;
+        SetHandGrabbing(true);
+
+        // Move hand toward center
+        while (t < 1f)
+        {
+            t += Time.deltaTime / grabDuration;
+            handRenderer.transform.position = Vector3.Lerp(startPos, endPos, t);
+            yield return null;
+        }
+
+        // Wait briefly at center (like grabbing)
+        yield return new WaitForSeconds(0.1f);
+
+        // Move hand back
+        t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime / grabDuration;
+            handRenderer.transform.position = Vector3.Lerp(endPos, startPos, t);
+            yield return null;
+        }
+
+        SetHandGrabbing(false);
     }
 
     // Number of cards left
