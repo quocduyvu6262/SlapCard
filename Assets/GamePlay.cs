@@ -13,6 +13,12 @@ public class GamePlay : MonoBehaviour
     [Tooltip("The time in seconds between each card being played.")]
     public float playSpeed = 1f;
 
+    [Header("Audio")]
+    public AudioClip cardPlaySound;
+    public AudioClip slapSound;
+    private AudioSource audioSource;
+
+
 
     // reference the script
     void Awake()
@@ -21,6 +27,7 @@ public class GamePlay : MonoBehaviour
         centerPile = GetComponent<CenterPile>();
         players = gameManager.players;
         pile = centerPile.pile;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -53,6 +60,10 @@ public class GamePlay : MonoBehaviour
                 {
                     Card cardToPlay = currentPlayer.DrawCard();
                     centerPile.AddCard(cardToPlay);
+                    if (cardPlaySound != null)
+                    {
+                        audioSource.PlayOneShot(cardPlaySound);
+                    }
 
                     // You could check for a slap condition here automatically if you wanted
                     // if(CheckSlapCondition()) { ... }
@@ -110,6 +121,10 @@ public class GamePlay : MonoBehaviour
 
     private void HandleSlap()
     {
+        if (slapSound != null)
+        {
+            audioSource.PlayOneShot(slapSound);
+        }
         // // We'll assume the human is always the first player (players[0])
         Player humanPlayer = null;
 
@@ -170,6 +185,10 @@ public class GamePlay : MonoBehaviour
     }
     private void HandleBotSlap(Player bot)
     {
+        if (slapSound != null)
+        {
+            audioSource.PlayOneShot(slapSound);
+        }
         // The bot's slap is always correct because it only slaps when the condition is true.
         Debug.Log(bot.Name + " slapped correctly! They get the pile.");
 
