@@ -161,6 +161,8 @@ public class GamePlay : MonoBehaviour
             }
         }
 
+        StartCoroutine(humanPlayer.AnimateSlap(centerPile, 0.2f, 1f));
+
         // 2. CHECK CONDITION: See if the slap was correct.
         if (CheckForSlapCondition())
         {

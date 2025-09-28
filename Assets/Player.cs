@@ -67,12 +67,6 @@ public class Player : MonoBehaviour
 
     public IEnumerator DrawCardWithAnimation(CenterPile centerPile, float grabDelay = 0.2f, float moveDuration = 0.3f)
     {
-        // Switch to grabbing hand
-        SetHandGrabbing(true);
-
-        StartCoroutine(AnimateHandGrab(new Vector3(0, 1f, 0), grabDelay));
-
-        // Wait for grabbing animation
         yield return new WaitForSeconds(grabDelay);
 
         // Draw the card
@@ -89,11 +83,7 @@ public class Player : MonoBehaviour
             moveDuration
         ));
 
-        // Add card to center pile
         centerPile.AddCard(card);
-
-        // Switch back to default hand
-        SetHandGrabbing(false);
     }
 
     // Peek at top card (no removal)
@@ -168,23 +158,29 @@ public class Player : MonoBehaviour
         }
     }
 
-    public IEnumerator AnimateHandGrab(Vector3 targetOffset, float grabDuration = 0.3f)
+    public IEnumerator AnimateSlap(CenterPile centerPile, float grabDuration = 0.2f, float handReachDistance = 1f)
     {
-        if (handRenderer == null) yield break;
+        if (handRenderer == null || centerPile.IsEmpty) yield break;
 
         Vector3 startPos = handRenderer.transform.localPosition;
-        Vector3 endPos = startPos + targetOffset;
+
+        // Calculate a direction toward the center pile
+        Vector3 direction = (centerPile.transform.position - transform.position).normalized;
+        Vector3 endPos = startPos + new Vector3(direction.x, direction.y, 0) * handReachDistance * 5f;
 
         float t = 0f;
         SetHandGrabbing(true);
 
-        // Move hand to grab
+        // Move hand toward center
         while (t < 1f)
         {
             t += Time.deltaTime / grabDuration;
             handRenderer.transform.localPosition = Vector3.Lerp(startPos, endPos, t);
             yield return null;
         }
+
+        // Wait briefly at center (like grabbing)
+        yield return new WaitForSeconds(0.1f);
 
         // Move hand back
         t = 0f;
