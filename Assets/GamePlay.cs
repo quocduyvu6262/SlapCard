@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class GamePlay : MonoBehaviour
 {
@@ -23,6 +24,13 @@ public class GamePlay : MonoBehaviour
 
     private HashSet<Player> playersWithNoCards = new HashSet<Player>();
 
+    [Header("Lives System")]
+    public int maxLives = 3;
+    private int currentLives;
+    public Transform livesPanel;       // The container for hearts
+    public GameObject heartPrefab;
+    private List<GameObject> heartIcons = new List<GameObject>();  // The heart template (disabled Image)
+
     void Awake()
     {
         gameManager = GetComponent<GameManager>();
@@ -35,8 +43,12 @@ public class GamePlay : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log(players.Count);
-        Debug.Log(pile.Count);
+        currentLives = maxLives;
+        if (heartPrefab != null)
+        {
+            heartPrefab.SetActive(false); // Hide template
+        }
+        CreateHearts();
         StartCoroutine(PlayCardsRoutine());
     }
 
@@ -109,7 +121,7 @@ public class GamePlay : MonoBehaviour
         // 1. DETECT INPUT: Check if the spacebar was pressed this frame.
         if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            HandleSlap();
+            StartCoroutine(HandleSlap());
         }
     }
 
@@ -144,7 +156,7 @@ public class GamePlay : MonoBehaviour
     }
 
 
-    private void HandleSlap()
+    private IEnumerator HandleSlap()
     {
         if (slapSound != null)
         {
@@ -162,12 +174,11 @@ public class GamePlay : MonoBehaviour
             }
         }
 
-        StartCoroutine(humanPlayer.AnimateSlap(centerPile, 0.2f, 1f));
+        yield return StartCoroutine(humanPlayer.AnimateSlap(centerPile, 0.2f, 1f));
 
         // 2. CHECK CONDITION: See if the slap was correct.
-        if (CheckForSlapCondition())
+        if (CheckForSlapCondition() && TryClaimPile())
         {
-            pileClaimed = true;
             // 3A. CORRECT SLAP: Give the pile to the player.
             Debug.Log(humanPlayer.Name + " slapped correctly! You get the pile.");
 
@@ -178,7 +189,8 @@ public class GamePlay : MonoBehaviour
         else
         {
             // 3B. INCORRECT SLAP: Player loses one health
-            Debug.Log(humanPlayer.Name + " slapped incorrectly! You lose a card.");
+            LoseLife();
+            Debug.Log(humanPlayer.Name + " slapped incorrectly! You lose a life.");
             // if (humanPlayer.HasCards)
             // {
             //     Card penaltyCard = humanPlayer.DrawCard();
@@ -205,28 +217,79 @@ public class GamePlay : MonoBehaviour
         float delay = Random.Range(bot.botReactionTime - 0.2f, bot.botReactionTime + 0.2f);
         yield return new WaitForSeconds(delay);
 
+        yield return StartCoroutine(bot.AnimateSlap(centerPile, 0.2f, 1.5f));
+
         // After waiting, check if the slap condition is still valid before slapping
         // This prevents the bot from slapping if a human has already won the pile
-        if (CheckForSlapCondition())
+        if (CheckForSlapCondition() && TryClaimPile())
         {
-            yield return StartCoroutine(bot.AnimateSlap(centerPile, 0.2f, 1.5f));
             HandleBotSlap(bot);
         }
         activeBotSlaps--;
     }
     private void HandleBotSlap(Player bot)
     {
-        if (pileClaimed) return;
         if (slapSound != null)
         {
             audioSource.PlayOneShot(slapSound);
         }
-        pileClaimed = true;
         // The bot's slap is always correct because it only slaps when the condition is true.
         Debug.Log(bot.Name + " slapped correctly! They get the pile.");
 
         List<Card> wonCards = new List<Card>(centerPile.TakeAllCards());
         wonCards.Reverse(); // Reverse so the bottom of the pile is added first
         bot.AddCardsToHand(wonCards);
+    }
+
+    private void CreateHearts()
+    {
+        // Clear old
+        foreach (Transform child in livesPanel)
+        {
+            if (child.gameObject != heartPrefab)
+                Destroy(child.gameObject);
+        }
+
+        heartIcons.Clear();
+
+        // Create hearts
+        for (int i = 0; i < maxLives; i++)
+        {
+            GameObject heart = Instantiate(heartPrefab, livesPanel);
+            heart.SetActive(true);
+            heartIcons.Add(heart);
+        }
+    }
+
+    private void LoseLife()
+    {
+        if (currentLives <= 0) return;
+
+        currentLives--;
+        Destroy(heartIcons[currentLives]); // Remove last heart
+        heartIcons.RemoveAt(currentLives);
+
+        if (currentLives <= 0)
+        {
+            Debug.Log("You lost all lives! Game Over.");
+            EndGame(false);
+        }
+    }
+
+    private void EndGame(bool playerWon)
+    {
+        if (playerWon)
+            Debug.Log("🎉 You win!");
+        else
+            Debug.Log("💀 You lost!");
+
+        StopAllCoroutines();
+    }
+    
+    private bool TryClaimPile()
+    {
+        if (pileClaimed) return false;
+        pileClaimed = true;
+        return true;
     }
 }
