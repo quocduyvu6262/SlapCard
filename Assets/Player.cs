@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     public string Name { get; set; }
     public bool IsBot { get; set; }
-    public float botReactionTime = 1.0f;
+    public float botReactionTime = 4.0f;
 
     [Tooltip("The UI Text element for displaying the card count.")]
     public TextMeshProUGUI cardCountText;

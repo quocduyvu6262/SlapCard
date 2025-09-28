@@ -74,24 +74,13 @@ public class CenterPile : MonoBehaviour
     public void AddCardToBottom(Card card)
     {
         if (card == null) return;
+        pile.Insert(0, card); // Insert at the beginning of the list (the "bottom")
+    }
 
-        // 1. Convert the stack to a temporary list
-        List<Card> tempList = pile.ToList();
-
-        // 2. Add the new card to the beginning of the list
-        tempList.Insert(0, card);
-
-        // 3. Clear the original stack
-        pile.Clear();
-
-        // 4. Re-populate the stack from the modified list
-        // We must loop backwards to maintain the correct stack order
-        for (int i = tempList.Count - 1; i >= 0; i--)
-        {
-            pile.Add(tempList[i]);
-        }
-
-        Debug.Log($"Added {card.name} to the bottom of the center pile.");
+    public Card PeekSecondCard()
+    {
+        if (pile.Count < 2) return null;
+        return pile[pile.Count - 2]; // The second-to-last item
     }
 
     // Is pile empty?

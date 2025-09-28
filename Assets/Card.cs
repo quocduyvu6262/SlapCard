@@ -29,8 +29,10 @@ public class Card : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // Get the object's name and remove "(Clone)" if it exists
+        string objectName = gameObject.name.Replace("(Clone)", "");
         // Expecting prefab name like: "Card_Heart_Ace"
-        string[] parts = gameObject.name.Split('_');
+        string[] parts = objectName.Split('_');
 
         if (parts.Length == 3)
         {
@@ -77,7 +79,7 @@ public class Card : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     // --- OPTION 1: INSTANT FLIP ---
@@ -98,7 +100,7 @@ public class Card : MonoBehaviour
 
 
     // --- OPTION 2: ANIMATED FLIP (SMOOTHER) ---
-    
+
     // Smoothly animates the card flip over a short duration
     public void FlipAnimated(float duration = 0.3f)
     {
@@ -106,7 +108,7 @@ public class Card : MonoBehaviour
         StopAllCoroutines(); // Stop any existing flip animations
         StartCoroutine(FlipCoroutine(isFaceUp ? faceUpRotation : faceDownRotation, duration));
     }
-    
+
     public void ShowFaceAnimated(bool show, float duration = 0.3f)
     {
         isFaceUp = show;
