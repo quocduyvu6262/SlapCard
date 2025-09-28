@@ -3,7 +3,12 @@ using UnityEngine;
 
 public class CenterPile : MonoBehaviour
 {
-    private Stack<Card> pile = new Stack<Card>();
+    public Stack<Card> pile;
+
+    void Awake()
+    {
+        pile = new Stack<Card>();
+    }
 
     // Add a card to the pile
     public void AddCard(Card card)

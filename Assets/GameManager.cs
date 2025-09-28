@@ -9,18 +9,22 @@ public class GameManager : MonoBehaviour
     public GameObject[] cardPrefabs; // Drag all 52 card prefabs here
     private List<Card> deck = new List<Card>();
     public GameObject playerPrefab;
-    private List<Player> players = new List<Player>();
+    public List<Player> players = new List<Player>();
 
     [Header("Player Setup")]
     public Transform tableCenter;
 
-    void Start()
+    void Awake()
     {
         cardPrefabs = Resources.LoadAll<GameObject>(cardFolderPath);
         playerPrefab = Resources.Load<GameObject>("PlayerPrefab");
 
         InitDeck();
         CreatePlayers();
+    }
+
+    void Start()
+    {
         DealCards();
     }
 
