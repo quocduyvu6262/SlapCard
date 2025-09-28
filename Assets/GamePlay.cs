@@ -38,6 +38,9 @@ public class GamePlay : MonoBehaviour
     public TextMeshProUGUI timerText;
 
 
+    private bool isSlapping = false;
+
+
     void Awake()
     {
         gameManager = GetComponent<GameManager>();
@@ -61,7 +64,6 @@ public class GamePlay : MonoBehaviour
         remainingTime = gameDuration;
         UpdateTimerUI();
         StartCoroutine(TimerRoutine());
-
         StartCoroutine(PlayCardsRoutine());
     }
 
@@ -73,6 +75,7 @@ public class GamePlay : MonoBehaviour
         // This loop will run forever until the game ends
         while (true)
         {
+
             // Go through each player
             foreach (Player currentPlayer in players)
             {
@@ -140,6 +143,9 @@ public class GamePlay : MonoBehaviour
 
     private IEnumerator HandleSlap()
     {
+        if (isSlapping) yield break; // Ignore if already slapping
+        isSlapping = true;
+
         if (slapSound != null)
         {
             audioSource.PlayOneShot(slapSound);
@@ -181,6 +187,9 @@ public class GamePlay : MonoBehaviour
             //     centerPile.AddCardToBottom(penaltyCard); // Add their card to the bottom of the pile
             // }
         }
+
+        yield return new WaitForSeconds(0.2f);
+        isSlapping = false;
     }
 
     private void TriggerBotSlaps()
