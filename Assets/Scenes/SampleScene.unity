@@ -629,7 +629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99f82fdd5c10faf41a1777f6470f94d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GamePlay
-  playSpeed: 2
+  playSpeed: 0.5
   cardPlaySound: {fileID: 8300000, guid: c8de46178f03332478365f2b19038890, type: 3}
   slapSound: {fileID: 8300000, guid: 77ce7cbd7b5296a499f2584fcb3ed48e, type: 3}
   maxLives: 3

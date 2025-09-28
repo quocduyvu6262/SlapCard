@@ -116,9 +116,9 @@ Transform:
   m_GameObject: {fileID: 3722864313324608236}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.17364816, w: 0.9848078}
-  m_LocalPosition: {x: -2.7, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -3.2, y: 0, z: 0}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1984947986627429115}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 20}
@@ -206,9 +206,9 @@ Transform:
   m_GameObject: {fileID: 5531457062757597297}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.17364816, w: 0.9848078}
-  m_LocalPosition: {x: 2.5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 2.7, y: 0, z: 0}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1984947986627429115}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 20}
@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ee7093841ed4b8387b0b515e8e9919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  botReactionTime: 1
+  botReactionTime: 0.6
   cardCountText: {fileID: 1830696452760170848}
   handRenderer: {fileID: 5539351050883204948}
   leftHandRenderer: {fileID: 4332067509356045158}
@@ -484,7 +484,7 @@ Transform:
   m_GameObject: {fileID: 7196092635276471078}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.68, y: 2.088, z: 0}
+  m_LocalPosition: {x: 5.5, y: 2.088, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
