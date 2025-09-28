@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 5fb02449c2a668744908c17800e5bcf6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5993728820778641027
+    second: purrfectTiming_0
+  - first:
+      213: -3222025789895090338
+    second: purrfectTiming_1
+  - first:
+      213: -2655905238382906800
+    second: purrfectTiming_2
+  - first:
+      213: 8112802889128377798
+    second: purrfectTiming_3
+  - first:
+      213: -4139795218270740677
+    second: purrfectTiming_4
+  - first:
+      213: 7761659705145158008
+    second: purrfectTiming_5
+  - first:
+      213: 7546932177401257662
+    second: purrfectTiming_6
+  - first:
+      213: -7388387262056227746
+    second: purrfectTiming_7
+  - first:
+      213: 3553516896272742965
+    second: purrfectTiming_8
+  - first:
+      213: -222559643318032285
+    second: purrfectTiming_9
+  - first:
+      213: -4366243199392058278
+    second: purrfectTiming_10
+  - first:
+      213: -488058652257889846
+    second: purrfectTiming_11
+  - first:
+      213: 7333314723624892215
+    second: purrfectTiming_12
+  - first:
+      213: 4229123048184681469
+    second: purrfectTiming_13
+  - first:
+      213: -8765614504322319043
+    second: purrfectTiming_14
+  - first:
+      213: 6196213439502812656
+    second: purrfectTiming_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: purrfectTiming_0
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 849
+        width: 69
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d79d775c46ff1dca0800000000000000
+      internalID: -5993728820778641027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purrfectTiming_1
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 848
+        width: 87
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5fd7287d901943d0800000000000000
+      internalID: -3222025789895090338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purrfectTiming_2
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 847
+        width: 84
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 052761dd144542bd0800000000000000
+      internalID: -2655905238382906800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purrfectTiming_3
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 848
+        width: 86
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cd72438e37769070800000000000000
+      internalID: 8112802889128377798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purrfectTiming_4
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 849
+        width: 79
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3f9c1cbe2e7c86c0800000000000000
+      internalID: -4139795218270740677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purrfectTiming_5
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 854
+        width: 76
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 879e3a8f064f6bb60800000000000000
+      internalID: 7761659705145158008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purrfectTiming_6
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 855
+        width: 98
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebe97f974d61cb860800000000000000
+      internalID: 7546932177401257662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purrfectTiming_7
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 851
+        width: 109
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5c1e163eec277990800000000000000
+      internalID: -7388387262056227746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purrfectTiming_8
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 703
+        width: 137
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53a7fa13ac0a05130800000000000000
+      internalID: 3553516896272742965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purrfectTiming_9
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 702
+        width: 109
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 368e0befe2f49ecf0800000000000000
+      internalID: -222559643318032285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purrfectTiming_10
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 705
+        width: 42
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a54754981fcf763c0800000000000000
+      internalID: -4366243199392058278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purrfectTiming_11
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 706
+        width: 133
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac1dc9add311a39f0800000000000000
+      internalID: -488058652257889846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purrfectTiming_12
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 711
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 737bdc733ea25c560800000000000000
+      internalID: 7333314723624892215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purrfectTiming_13
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 710
+        width: 49
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df31776610dd0ba30800000000000000
+      internalID: 4229123048184681469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purrfectTiming_14
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 711
+        width: 99
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3d3bdfec084a5680800000000000000
+      internalID: -8765614504322319043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purrfectTiming_15
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 717
+        width: 112
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f501165b4f5df550800000000000000
+      internalID: 6196213439502812656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      purrfectTiming_0: -5993728820778641027
+      purrfectTiming_1: -3222025789895090338
+      purrfectTiming_10: -4366243199392058278
+      purrfectTiming_11: -488058652257889846
+      purrfectTiming_12: 7333314723624892215
+      purrfectTiming_13: 4229123048184681469
+      purrfectTiming_14: -8765614504322319043
+      purrfectTiming_15: 6196213439502812656
+      purrfectTiming_2: -2655905238382906800
+      purrfectTiming_3: 8112802889128377798
+      purrfectTiming_4: -4139795218270740677
+      purrfectTiming_5: 7761659705145158008
+      purrfectTiming_6: 7546932177401257662
+      purrfectTiming_7: -7388387262056227746
+      purrfectTiming_8: 3553516896272742965
+      purrfectTiming_9: -222559643318032285
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

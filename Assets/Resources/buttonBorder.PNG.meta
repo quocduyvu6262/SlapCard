@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1d94cf6798f22004fa97ef039274dfe5
+guid: 05856c8c74d77ff4ea48363ba9eb93c3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8342976183064254840
-    second: Coffee-Icon-by-Zhenstudio-13_0
+      213: 583968653923650342
+    second: buttonBorder_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Coffee-Icon-by-Zhenstudio-13_0
+      name: buttonBorder_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2418
-        height: 1609
+        width: 344
+        height: 106
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 879d611b2a438c370800000000000000
-      internalID: 8342976183064254840
+      spriteID: 62b0511956caa1800800000000000000
+      internalID: 583968653923650342
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Coffee-Icon-by-Zhenstudio-13_0: 8342976183064254840
+      buttonBorder_0: 583968653923650342
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
