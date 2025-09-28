@@ -19,5 +19,7 @@ Assets/AssetStoreTools/
 *.user
 *.userprefs
 
+# Ignore Unity User settings
+UserSettings/
 SlapCard.sln
 Assembly-CSharp.csproj
