@@ -4,27 +4,33 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public string cardFolderPath = "Asset_PlayingCards/Prefabs/Deck01";
+    public string cardFolderPath = "Asset_PlayingCards/Prefabs/Deck03";
     [Header("Deck Prefabs")]
     public GameObject[] cardPrefabs; // Drag all 52 card prefabs here
     private List<Card> deck = new List<Card>();
     public GameObject playerPrefab;
-    private List<Player> players = new List<Player>();
+    public List<Player> players = new List<Player>();
 
     [Header("Player Setup")]
     public Transform tableCenter;
 
-    void Start()
+    void Awake()
     {
         cardPrefabs = Resources.LoadAll<GameObject>(cardFolderPath);
         playerPrefab = Resources.Load<GameObject>("PlayerPrefab");
 
         InitDeck();
         CreatePlayers();
-        DealCards();
     }
 
-    void Update() {
+    void Start()
+    {
+        DealCards();
+
+    }
+
+    void Update()
+    {
 
     }
 
@@ -116,14 +122,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator DealCardsAnimated() 
+    private IEnumerator DealCardsAnimated()
     {
         int cardsPerPlayer = 13;
         float dealDelay = 0.2f;
 
         for (int round = 0; round < cardsPerPlayer; round++)
         {
-            for (int i = 0; i < players.Count; i ++)
+            for (int i = 0; i < players.Count; i++)
             {
                 if (deck.Count == 0) yield break;
                 Card card = deck[0];
@@ -151,7 +157,7 @@ public class GameManager : MonoBehaviour
             Debug.Log($"{p.Name} has {p.CardCount} cards");
         }
     }
-    
+
     private IEnumerator MoveCardToPlayer(Card card, Player player)
     {
         Vector3 start = tableCenter.position;

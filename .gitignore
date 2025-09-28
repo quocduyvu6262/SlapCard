@@ -18,6 +18,9 @@ Assets/AssetStoreTools/
 *.tmp
 *.user
 *.userprefs
+<<<<<<< HEAD
 
 SlapCard.sln
 Assembly-CSharp.csproj
+=======
+>>>>>>> origin/main

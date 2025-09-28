@@ -119,6 +119,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &93604155
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,6 +524,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330597278}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> origin/main
 --- !u!1 &426388958
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,6 +605,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &427506723
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,6 +829,8 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8362425881802680242, guid: f426eb3588c7a3d41b4891d927c9423c, type: 3}
   m_PrefabInstance: {fileID: 483316488}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> origin/main
 --- !u!1 &728612558
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,9 +952,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
+<<<<<<< HEAD
   m_Children:
   - {fileID: 2031555636}
   - {fileID: 93604156}
+=======
+  m_Children: []
+>>>>>>> origin/main
   m_Father: {fileID: 2051511851}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -994,6 +1004,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 745254170}
   m_CullTransparentMesh: 1
+<<<<<<< HEAD
 --- !u!1 &750837677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1808,6 +1819,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2031555635}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> origin/main
 --- !u!1 &2051511847
 GameObject:
   m_ObjectHideFlags: 0
@@ -1885,7 +1898,11 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+<<<<<<< HEAD
   m_AdditionalShaderChannelsFlag: 25
+=======
+  m_AdditionalShaderChannelsFlag: 0
+>>>>>>> origin/main
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -1903,7 +1920,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 745254171}
+<<<<<<< HEAD
   - {fileID: 1842521734}
+=======
+>>>>>>> origin/main
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1911,6 +1931,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+<<<<<<< HEAD
 --- !u!1 &2082519943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1947,6 +1968,8 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+=======
+>>>>>>> origin/main
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

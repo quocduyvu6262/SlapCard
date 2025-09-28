@@ -48,6 +48,15 @@ public class Card : MonoBehaviour
                 case "J": rankString = "Jack"; break;
                 case "Q": rankString = "Queen"; break;
                 case "K": rankString = "King"; break;
+                case "2": rankString = "Two"; break;
+                case "3": rankString = "Three"; break;
+                case "4": rankString = "Four"; break;
+                case "5": rankString = "Five"; break;
+                case "6": rankString = "Six"; break;
+                case "7": rankString = "Seven"; break;
+                case "8": rankString = "Eight"; break;
+                case "9": rankString = "Nine"; break;
+                case "10": rankString = "Ten"; break;
             }
 
             if (Enum.TryParse(rankString, true, out CardRank parsedRank))
