@@ -18,3 +18,6 @@ Assets/AssetStoreTools/
 *.tmp
 *.user
 *.userprefs
+
+# Ignore Unity User settings
+UserSettings/

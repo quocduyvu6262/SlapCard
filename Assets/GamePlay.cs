@@ -142,8 +142,9 @@ public class GamePlay : MonoBehaviour
         // 2. CHECK CONDITION: See if the slap was correct.
         if (CheckForSlapCondition())
         {
+            Card correctCard = centerPile.PeekTopCard();
             // 3A. CORRECT SLAP: Give the pile to the player.
-            Debug.Log(humanPlayer.Name + " slapped correctly! You get the pile.");
+            Debug.Log(humanPlayer.Name + " slapped correctly on " + correctCard.name + "! You get the pile.");
 
             List<Card> wonCards = new List<Card>(centerPile.TakeAllCards());
             wonCards.Reverse(); // Reverse so the bottom of the pile is added first
@@ -191,8 +192,10 @@ public class GamePlay : MonoBehaviour
         {
             audioSource.PlayOneShot(slapSound);
         }
+        Card correctCard = centerPile.PeekTopCard();
+
         // The bot's slap is always correct because it only slaps when the condition is true.
-        Debug.Log(bot.Name + " slapped correctly! They get the pile.");
+        Debug.Log(bot.Name + " slapped correctly on " + correctCard.name + "! They get the pile.");
 
         List<Card> wonCards = new List<Card>(centerPile.TakeAllCards());
         wonCards.Reverse(); // Reverse so the bottom of the pile is added first

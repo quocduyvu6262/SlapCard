@@ -5,7 +5,7 @@ public class Player : MonoBehaviour
 {
     public string Name { get; set; }
     public bool IsBot { get; set; }
-    public float botReactionTime = 1.0f;
+    public float botReactionTime = 4.0f;
 
     // Where the player sits in the scene
     public Vector3 BasePosition { get; set; }
