@@ -2,19 +2,23 @@ using UnityEngine;
 
 public class DontDestroy : MonoBehaviour
 {
+    // This creates a static variable to hold the single instance of our SoundManager.
+    public static DontDestroy instance;
+
     void Awake()
     {
-        // Find all objects with the same tag as this one.
-        GameObject[] musicObjects = GameObject.FindGameObjectsWithTag(this.gameObject.tag);
-
-        // If there's more than one, it means a SoundManager already exists,
-        // so we destroy this new one to avoid duplicate music.
-        if (musicObjects.Length > 1)
+        // Check if an instance already exists.
+        if (instance == null)
         {
-            Destroy(this.gameObject);
+            // If not, set this object as the instance...
+            instance = this;
+            // ...and tell Unity not to destroy it when loading new scenes.
+            DontDestroyOnLoad(gameObject);
         }
-
-        // This tells Unity not to destroy this object when a new scene is loaded.
-        DontDestroyOnLoad(this.gameObject);
+        else
+        {
+            // If an instance already exists, destroy this new one immediately.
+            Destroy(gameObject);
+        }
     }
 }
