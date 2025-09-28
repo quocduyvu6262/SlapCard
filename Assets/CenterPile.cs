@@ -16,9 +16,19 @@ public class CenterPile: MonoBehaviour
         if (card != null)
         {
             card.gameObject.SetActive(true);
-            card.transform.SetParent(this.transform); 
-            card.transform.localPosition = Vector3.zero;
-            card.transform.localRotation = Quaternion.identity;
+
+            Vector3 originalScale = card.transform.localScale;
+
+            card.transform.position = this.transform.position;
+            card.transform.rotation = this.transform.rotation;
+            Card topCard = PeekTopCard();
+            if (topCard) {
+                Vector3 pos = card.transform.position;
+                pos.z = -1f;
+                topCard.transform.position = pos;
+            }
+            card.transform.position = new Vector3(0f,0f,-2f);
+            card.transform.localScale = originalScale;
 
             pile.Push(card);
             Debug.Log($"Added {card} to center pile");
