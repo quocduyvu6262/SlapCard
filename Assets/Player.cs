@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player: MonoBehaviour
+public class Player : MonoBehaviour
 {
     public string Name { get; set; }
     public bool IsBot { get; set; }
+    public float botReactionTime = 1.0f;
 
     // Where the player sits in the scene
     public Vector3 BasePosition { get; set; }
@@ -71,12 +72,28 @@ public class Player: MonoBehaviour
         foreach (Card card in hand)
         {
             card.transform.SetParent(this.transform);
-            card.transform.localPosition = handOffset + new Vector3(i*(-0.02f),0,i*zOffsetPerCard);
+            card.transform.localPosition = handOffset + new Vector3(i * (-0.02f), 0, i * zOffsetPerCard);
             card.transform.localRotation = Quaternion.identity;
             card.transform.localScale = new Vector3(1.5f, 1.5f, 1f);
             card.ShowFaceInstant(false);
             i++;
         }
+    }
+
+    //Adds a list of cards to the bottom of the player's hand.
+    public void AddCardsToHand(List<Card> cardsToAdd)
+    {
+        foreach (Card card in cardsToAdd)
+        {
+            // Enqueue adds the card to the end of the line (the bottom of the deck).
+            hand.Enqueue(card);
+
+            // Update the card's parent to belong to this player
+            card.transform.SetParent(this.transform);
+        }
+
+        // After adding cards, it's good practice to tidy up the visual stack
+        ArrangeHand();
     }
 
     bool SameRotation(Quaternion a, Quaternion b)
