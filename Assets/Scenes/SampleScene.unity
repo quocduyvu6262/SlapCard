@@ -351,6 +351,8 @@ GameObject:
   - component: {fileID: 949509388}
   - component: {fileID: 949509387}
   - component: {fileID: 949509389}
+  - component: {fileID: 949509390}
+  - component: {fileID: 949509391}
   m_Layer: 0
   m_Name: GameBoard
   m_TagString: Untagged
@@ -446,7 +448,32 @@ MonoBehaviour:
   cardFolderPath: Asset_PlayingCards/Prefabs/Deck01
   cardPrefabs: []
   playerPrefab: {fileID: 0}
+  players: []
   tableCenter: {fileID: 0}
+--- !u!114 &949509390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949509385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f82fdd5c10faf41a1777f6470f94d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GamePlay
+--- !u!114 &949509391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949509385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c0a71a27a4c44dcaf1e01f754a4ba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CenterPile
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

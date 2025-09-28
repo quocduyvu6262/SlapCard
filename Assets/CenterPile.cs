@@ -1,9 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CenterPile : MonoBehaviour
+public class CenterPile: MonoBehaviour
 {
-    private Stack<Card> pile = new Stack<Card>();
+    public Stack<Card> pile;
+
+    void Awake()
+    {
+        pile = new Stack<Card>();
+    }
 
     // Add a card to the pile
     public void AddCard(Card card)
@@ -11,7 +16,7 @@ public class CenterPile : MonoBehaviour
         if (card != null)
         {
             card.gameObject.SetActive(true);
-            card.transform.SetParent(this.transform, false);
+            card.transform.SetParent(this.transform); 
             card.transform.localPosition = Vector3.zero;
             card.transform.localRotation = Quaternion.identity;
 
