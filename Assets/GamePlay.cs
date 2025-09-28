@@ -18,7 +18,7 @@ public class GamePlay : MonoBehaviour
     public AudioClip slapSound;
     private AudioSource audioSource;
 
-
+    private HashSet<Player> playersWithNoCards = new HashSet<Player>();
 
     // reference the script
     void Awake()
@@ -72,6 +72,25 @@ public class GamePlay : MonoBehaviour
                         TriggerBotSlaps();
                         yield return new WaitForSeconds(2f);
                     }
+
+                    if (!currentPlayer.HasCards)
+                    {
+                        playersWithNoCards.Add(currentPlayer);
+                        Debug.Log(currentPlayer + " has no cards left. Eliminated.");
+                        if (playersWithNoCards.Count == 3)
+                        {
+                            string winner = "";
+                            foreach (Player p in players)
+                            {
+                                if (p.HasCards)
+                                {
+                                    winner = p.name;
+                                }
+                            }
+                            Debug.Log("Game finished, player: " + winner + " got all 52 cards");
+                            yield break;
+                        }
+                    }
                 }
 
                 // Wait for a moment before the next player goes
@@ -96,7 +115,7 @@ public class GamePlay : MonoBehaviour
 
         // Get the top card
         Card topCard = pile[pile.Count - 1];
-        Debug.Log($"Checking Card. Name: {topCard.Rank.ToString()}, Integer Value: {(int)topCard.Rank}");
+        // Debug.Log($"Checking Card. Name: {topCard.Rank.ToString()}, Integer Value: {(int)topCard.Rank}");
 
         // Condition 1: Is the top card a Jack, Queen, or King?
         if (topCard.Rank == CardRank.Jack || topCard.Rank == CardRank.Queen || topCard.Rank == CardRank.King)
