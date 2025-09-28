@@ -40,6 +40,10 @@ public class GamePlay : MonoBehaviour
 
     private bool isSlapping = false;
 
+    [Header("UI Feedback")]
+    public GameObject floatingTextPrefab; // The prefab you just created
+    public Transform worldCanvas;         // The World Space Canvas
+
 
     void Awake()
     {
@@ -174,6 +178,7 @@ public class GamePlay : MonoBehaviour
             List<Card> wonCards = new List<Card>(centerPile.TakeAllCards());
             wonCards.Reverse(); // Reverse so the bottom of the pile is added first
             humanPlayer.AddCardsToHand(wonCards);
+            ShowFloatingText($"+{wonCards.Count}", humanPlayer.transform.position, humanPlayer.transform.rotation);
         }
         else
         {
@@ -234,6 +239,7 @@ public class GamePlay : MonoBehaviour
         List<Card> wonCards = new List<Card>(centerPile.TakeAllCards());
         wonCards.Reverse(); // Reverse so the bottom of the pile is added first
         bot.AddCardsToHand(wonCards);
+        ShowFloatingText($"+{wonCards.Count}", bot.transform.position,  bot.transform.rotation);
     }
 
     private IEnumerator TimerRoutine()
@@ -367,6 +373,47 @@ public class GamePlay : MonoBehaviour
         else
         {
             EndGame(false);
+        }
+    }
+
+    /// <summary>
+    /// Creates a floating text message at a specific world position.
+    /// </summary>
+    private void ShowFloatingText(string message, Vector3 position, Quaternion rotation)
+    {
+        if (floatingTextPrefab == null) return;
+
+        // Instantiate the text prefab as a child of the world canvas
+
+        float zAngle = rotation.eulerAngles.z;
+        float offset = 2.5f;
+
+        if (Mathf.Approximately(zAngle, 90f)) 
+        {
+            position.x -= offset;
+        } 
+        else if (Mathf.Approximately(zAngle, 180f)) 
+        {
+            position.y -= offset;
+        }
+        else if (Mathf.Approximately(zAngle, 270f)) 
+        {
+            position.x += offset;
+        } 
+        else 
+        {
+            position.y += offset;
+        }
+
+        position.z -= 4f;
+
+        GameObject textObj = Instantiate(floatingTextPrefab, position, Quaternion.identity, worldCanvas);
+
+        // Set the text content
+        TextMeshProUGUI textMesh = textObj.GetComponent<TextMeshProUGUI>();
+        if (textMesh != null)
+        {
+            textMesh.text = message;
         }
     }
 }
