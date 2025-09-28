@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
 
     // Sprite Renderer
     public SpriteRenderer handRenderer;  // Drag the HandSprite's SpriteRenderer here
+    public SpriteRenderer leftHandRenderer;
     public Sprite defaultHand;
     public Sprite grabbingHand;
 
@@ -34,6 +35,7 @@ public class Player : MonoBehaviour
         if (handRenderer != null)
         {
             // Make sure hand always renders above cards
+            leftHandRenderer.sortingOrder = 100;
             handRenderer.sortingOrder = 100;
         }
     }
