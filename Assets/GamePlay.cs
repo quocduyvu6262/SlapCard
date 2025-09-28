@@ -10,8 +10,10 @@ public class GamePlay : MonoBehaviour
     private CenterPile centerPile;
     private List<Card> pile;
 
+    private int activeBotSlaps = 0;
+
     [Tooltip("The time in seconds between each card being played.")]
-    public float playSpeed = 1f;
+    public float playSpeed = 0.5f;
 
     [Header("Audio")]
     public AudioClip cardPlaySound;
@@ -70,7 +72,7 @@ public class GamePlay : MonoBehaviour
                     if (CheckForSlapCondition())
                     {
                         TriggerBotSlaps();
-                        yield return new WaitForSeconds(2f);
+                        yield return new WaitUntil(() => activeBotSlaps == 0);
                     }
 
                     if (!currentPlayer.HasCards)
@@ -193,6 +195,7 @@ public class GamePlay : MonoBehaviour
 
     private IEnumerator BotSlapRoutine(Player bot)
     {
+        activeBotSlaps++;
         // Wait for a random time based on the bot's reaction speed
         float delay = Random.Range(bot.botReactionTime - 0.2f, bot.botReactionTime + 0.2f);
         yield return new WaitForSeconds(delay);
@@ -203,6 +206,7 @@ public class GamePlay : MonoBehaviour
         {
             HandleBotSlap(bot);
         }
+        activeBotSlaps--;
     }
     private void HandleBotSlap(Player bot)
     {
