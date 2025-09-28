@@ -207,6 +207,7 @@ public class GamePlay : MonoBehaviour
         // This prevents the bot from slapping if a human has already won the pile
         if (CheckForSlapCondition())
         {
+            yield return StartCoroutine(bot.AnimateSlap(centerPile, 0.2f, 1.5f));
             HandleBotSlap(bot);
         }
         activeBotSlaps--;

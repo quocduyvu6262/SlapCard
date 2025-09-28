@@ -31,6 +31,11 @@ public class Player : MonoBehaviour
     void Awake()
     {
         hand = new Queue<Card>();
+        if (handRenderer != null)
+        {
+            // Make sure hand always renders above cards
+            handRenderer.sortingOrder = 100;
+        }
     }
 
     /// <summary>
@@ -162,11 +167,9 @@ public class Player : MonoBehaviour
     {
         if (handRenderer == null || centerPile.IsEmpty) yield break;
 
-        Vector3 startPos = handRenderer.transform.localPosition;
+        Vector3 startPos = handRenderer.transform.position;
 
-        // Calculate a direction toward the center pile
-        Vector3 direction = (centerPile.transform.position - transform.position).normalized;
-        Vector3 endPos = startPos + new Vector3(direction.x, direction.y, 0) * handReachDistance * 5f;
+        Vector3 endPos = centerPile.transform.position;
 
         float t = 0f;
         SetHandGrabbing(true);
@@ -175,7 +178,7 @@ public class Player : MonoBehaviour
         while (t < 1f)
         {
             t += Time.deltaTime / grabDuration;
-            handRenderer.transform.localPosition = Vector3.Lerp(startPos, endPos, t);
+            handRenderer.transform.position = Vector3.Lerp(startPos, endPos, t);
             yield return null;
         }
 
@@ -187,7 +190,7 @@ public class Player : MonoBehaviour
         while (t < 1f)
         {
             t += Time.deltaTime / grabDuration;
-            handRenderer.transform.localPosition = Vector3.Lerp(endPos, startPos, t);
+            handRenderer.transform.position = Vector3.Lerp(endPos, startPos, t);
             yield return null;
         }
 

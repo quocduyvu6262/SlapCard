@@ -137,14 +137,11 @@ public class Card : MonoBehaviour
         transform.position = start;
         transform.rotation = startRot;
 
-        Debug.Log(start);
-        Debug.Log(end);
-
         while (t < 1f)
         {
             t += Time.deltaTime / duration;
-            transform.position = Vector3.Lerp(start, end, -1f);
-            transform.rotation = Quaternion.Lerp(startRot, endRot, -1f);
+            transform.position = Vector3.Lerp(start, end, t);
+            transform.rotation = Quaternion.Lerp(startRot, endRot, t);
             yield return null;
         }
 
