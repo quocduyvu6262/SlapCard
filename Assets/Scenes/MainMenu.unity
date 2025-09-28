@@ -779,8 +779,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Exit
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dff38fbf5beb2b04993232f30c4e0849, type: 2}
-  m_sharedMaterial: {fileID: 2423124203211942367, guid: dff38fbf5beb2b04993232f30c4e0849, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 634d266edb410554380d68904de9e90a, type: 2}
+  m_sharedMaterial: {fileID: -3297050517550870094, guid: 634d266edb410554380d68904de9e90a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1061,8 +1061,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Start Game
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dff38fbf5beb2b04993232f30c4e0849, type: 2}
-  m_sharedMaterial: {fileID: 2423124203211942367, guid: dff38fbf5beb2b04993232f30c4e0849, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 634d266edb410554380d68904de9e90a, type: 2}
+  m_sharedMaterial: {fileID: -3297050517550870094, guid: 634d266edb410554380d68904de9e90a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1318,8 +1318,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Purrfect Timing
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dff38fbf5beb2b04993232f30c4e0849, type: 2}
-  m_sharedMaterial: {fileID: 2423124203211942367, guid: dff38fbf5beb2b04993232f30c4e0849, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 634d266edb410554380d68904de9e90a, type: 2}
+  m_sharedMaterial: {fileID: -3297050517550870094, guid: 634d266edb410554380d68904de9e90a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1429,8 +1429,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -8.000025, y: 0}
-  m_SizeDelta: {x: -16.00005, y: 0.000015259}
+  m_AnchoredPosition: {x: -0.000024796, y: 0}
+  m_SizeDelta: {x: -0.000091553, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2134865470
 MonoBehaviour:
@@ -1454,8 +1454,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Instructions
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dff38fbf5beb2b04993232f30c4e0849, type: 2}
-  m_sharedMaterial: {fileID: 2423124203211942367, guid: dff38fbf5beb2b04993232f30c4e0849, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 634d266edb410554380d68904de9e90a, type: 2}
+  m_sharedMaterial: {fileID: -3297050517550870094, guid: 634d266edb410554380d68904de9e90a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
