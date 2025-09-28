@@ -737,7 +737,7 @@ MonoBehaviour:
   livesPanel: {fileID: 538723656}
   heartPrefab: {fileID: 2095302432}
   gameDuration: 60
-  timerText: {fileID: 0}
+  timerText: {fileID: 1328972704}
 --- !u!114 &949509391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -950,7 +950,7 @@ GameObject:
   - component: {fileID: 1328972705}
   - component: {fileID: 1328972704}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TimerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -972,7 +972,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.75, y: 0}
+  m_AnchoredPosition: {x: -0.8, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1328972704

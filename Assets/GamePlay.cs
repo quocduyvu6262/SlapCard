@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using TMPro;
 
 public class GamePlay : MonoBehaviour
 {
@@ -34,7 +35,7 @@ public class GamePlay : MonoBehaviour
     [Header("Timer System")]
     public float gameDuration = 60f; // total game time in seconds
     private float remainingTime;
-    public Text timerText;
+    public TextMeshProUGUI timerText;
 
 
     void Awake()
