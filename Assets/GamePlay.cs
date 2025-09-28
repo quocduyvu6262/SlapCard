@@ -8,10 +8,10 @@ public class GamePlay : MonoBehaviour
     private GameManager gameManager;
     private List<Player> players;
     private CenterPile centerPile;
-    private Stack<Card> pile;
+    private List<Card> pile;
 
     [Tooltip("The time in seconds between each card being played.")]
-    public float playSpeed = 4f;
+    public float playSpeed = 1f;
 
 
     // reference the script
@@ -83,7 +83,7 @@ public class GamePlay : MonoBehaviour
         if (pile.Count < 1) return false; // Can't slap an empty pile
 
         // Get the top card
-        Card topCard = pile.Peek();
+        Card topCard = pile[pile.Count - 1];
 
         // Condition 1: Is the top card a Jack, Queen, or King?
         if (topCard.Rank == CardRank.Jack || topCard.Rank == CardRank.Queen || topCard.Rank == CardRank.King)
@@ -95,10 +95,8 @@ public class GamePlay : MonoBehaviour
         if (pile.Count >= 2)
         {
             // Temporarily remove the top card to see the one underneath
-            Card secondCard = pile.Pop();
-            Card actualSecondCard = pile.Peek();
+            Card actualSecondCard = pile[pile.Count - 2];
             // Put the top card back
-            pile.Push(secondCard);
 
             if (topCard.Rank == actualSecondCard.Rank)
             {

@@ -445,7 +445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bacd6d715cbd4eb88d11e7896a83773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  cardFolderPath: Asset_PlayingCards/Prefabs/Deck01
+  cardFolderPath: Asset_PlayingCards/Prefabs/Deck03
   cardPrefabs: []
   playerPrefab: {fileID: 0}
   players: []
@@ -462,6 +462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99f82fdd5c10faf41a1777f6470f94d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GamePlay
+  playSpeed: 2
 --- !u!114 &949509391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,6 +475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67c0a71a27a4c44dcaf1e01f754a4ba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CenterPile
+  pile: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -51,8 +51,10 @@
     <Compile Include="Assets\Player.cs" />
     <Compile Include="Assets\CenterPile.cs" />
     <Compile Include="Assets\GamePlay.cs" />
+    <Compile Include="Assets\exitButton.cs" />
     <Compile Include="Assets\Card.cs" />
     <Compile Include="Assets\GameManager.cs" />
+    <Compile Include="Assets\startGameButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
