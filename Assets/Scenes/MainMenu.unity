@@ -596,6 +596,8 @@ GameObject:
   - component: {fileID: 1613772087}
   - component: {fileID: 1613772086}
   - component: {fileID: 1613772089}
+  - component: {fileID: 1613772091}
+  - component: {fileID: 1613772090}
   m_Layer: 5
   m_Name: instructionsButton
   m_TagString: Untagged
@@ -730,6 +732,125 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   instructionScene: 2
+--- !u!114 &1613772090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613772084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22205f052e334bf41b62b726dcf30c12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HoverEffect
+--- !u!114 &1613772091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613772084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1613772090}
+          m_TargetAssemblyTypeName: HoverEffect, Assembly-CSharp
+          m_MethodName: OnHoverEffectEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1613772084}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1613772090}
+          m_TargetAssemblyTypeName: HoverEffect, Assembly-CSharp
+          m_MethodName: OnHoverEffectExit
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1613772084}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &1708893617 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7883025289368110165, guid: 2dc7b0b6478a1d1458d6ade5848f8660, type: 3}
+  m_PrefabInstance: {fileID: 5471840621352339098}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1708893622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708893617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1708893623}
+          m_TargetAssemblyTypeName: HoverEffect, Assembly-CSharp
+          m_MethodName: OnHoverEffectEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1708893617}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1708893623}
+          m_TargetAssemblyTypeName: HoverEffect, Assembly-CSharp
+          m_MethodName: OnHoverEffectExit
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1708893617}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1708893623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708893617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22205f052e334bf41b62b726dcf30c12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HoverEffect
 --- !u!1 &2110182899
 GameObject:
   m_ObjectHideFlags: 0
@@ -1097,8 +1218,76 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5568053665645683592, guid: f426eb3588c7a3d41b4891d927c9423c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4053925126847059656}
+    - targetCorrespondingSourceObject: {fileID: 5568053665645683592, guid: f426eb3588c7a3d41b4891d927c9423c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4053925126847059655}
   m_SourcePrefab: {fileID: 100100000, guid: f426eb3588c7a3d41b4891d927c9423c, type: 3}
+--- !u!1 &4053925126847059654 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5568053665645683592, guid: f426eb3588c7a3d41b4891d927c9423c, type: 3}
+  m_PrefabInstance: {fileID: 4053925126847059653}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4053925126847059655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4053925126847059654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22205f052e334bf41b62b726dcf30c12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!114 &4053925126847059656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4053925126847059654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4053925126847059655}
+          m_TargetAssemblyTypeName: HoverEffect, Assembly-CSharp
+          m_MethodName: OnHoverEffectEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 4053925126847059654}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4053925126847059655}
+          m_TargetAssemblyTypeName: HoverEffect, Assembly-CSharp
+          m_MethodName: OnHoverEffectExit
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 4053925126847059654}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &5471840621352339098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1194,7 +1383,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7883025289368110165, guid: 2dc7b0b6478a1d1458d6ade5848f8660, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1708893623}
+    - targetCorrespondingSourceObject: {fileID: 7883025289368110165, guid: 2dc7b0b6478a1d1458d6ade5848f8660, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1708893622}
   m_SourcePrefab: {fileID: 100100000, guid: 2dc7b0b6478a1d1458d6ade5848f8660, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
