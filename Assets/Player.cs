@@ -21,6 +21,12 @@ public class Player : MonoBehaviour
     // For reaction timing (especially for bots)
     public float ReactionTimer { get; set; }
 
+    // Sprite Renderer
+    public SpriteRenderer handRenderer;  // Drag the HandSprite's SpriteRenderer here
+    public Sprite defaultHand;
+    public Sprite grabbingHand;
+
+
     void Awake()
     {
         hand = new Queue<Card>();
@@ -120,6 +126,14 @@ public class Player : MonoBehaviour
     bool SameRotation(Quaternion a, Quaternion b)
     {
         return Quaternion.Dot(a, b) > 0.9999f; // threshold for tolerance
+    }
+    
+    public void SetHandGrabbing(bool isGrabbing)
+    {
+        if (handRenderer != null)
+        {
+            handRenderer.sprite = isGrabbing ? grabbingHand : defaultHand;
+        }
     }
 
     // Number of cards left
