@@ -28,6 +28,13 @@ public class Player : MonoBehaviour
     public Sprite defaultHand;
     public Sprite grabbingHand;
 
+    public Sprite hand1d;
+    public Sprite hand1g;
+    public Sprite hand2d;
+    public Sprite hand2g;
+    public Sprite hand3d;
+    public Sprite hand3g;
+
 
     void Awake()
     {
@@ -38,6 +45,28 @@ public class Player : MonoBehaviour
             leftHandRenderer.sortingOrder = 100;
             handRenderer.sortingOrder = 100;
         }
+    }
+
+    void Start()
+    {
+        if (Name == "den")
+        {
+            this.defaultHand = this.hand1d;
+            this.grabbingHand = this.hand1g;
+        }
+        else if (Name == "tamthe")
+        {
+            this.defaultHand = this.hand2d;
+            this.grabbingHand = this.hand2g;
+        }
+        else if (Name == "xiem")
+        {
+            this.defaultHand = this.hand3d;
+            this.grabbingHand = this.hand3g;
+        }
+
+        this.handRenderer.sprite = this.defaultHand;
+        this.leftHandRenderer.sprite = this.grabbingHand;
     }
 
     /// <summary>

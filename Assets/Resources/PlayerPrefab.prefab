@@ -323,6 +323,12 @@ MonoBehaviour:
   leftHandRenderer: {fileID: 4332067509356045158}
   defaultHand: {fileID: 4959700247283910049, guid: e772d478f53934d7c88622d06355541c, type: 3}
   grabbingHand: {fileID: -770250802742399761, guid: 12bf23581fac74c47bf583f076ff9abb, type: 3}
+  hand1d: {fileID: 3146027794313528387, guid: ee324eeb1fb7a4eeb915a9c85ebe9283, type: 3}
+  hand1g: {fileID: -1397502379633555234, guid: 411f4f4d958d24592998b0295abb86d1, type: 3}
+  hand2d: {fileID: 8102294003557717028, guid: ef25259fab5544eec9e24dd03dfcd7cd, type: 3}
+  hand2g: {fileID: 8121454352798153275, guid: d0736d17d78bb455383e059b203e24f6, type: 3}
+  hand3d: {fileID: -3899428220793300363, guid: 825e5530349e849bf863a01177f55610, type: 3}
+  hand3g: {fileID: -5007713946078692358, guid: bb96f2b14a2a04a38bb18da13425ca65, type: 3}
 --- !u!1 &7093804548470809778
 GameObject:
   m_ObjectHideFlags: 0

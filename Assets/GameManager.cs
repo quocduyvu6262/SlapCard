@@ -75,8 +75,9 @@ public class GameManager : MonoBehaviour
             Quaternion.Euler(0,0,270)
         };
 
-        string[] names = { "You", "Bot A", "Bot B", "Bot C" };
+        string[] names = { "You", "den", "tamthe", "xiem" };
         bool[] isBot = { false, true, true, true };
+        
 
         for (int i = 0; i < 4; i++)
         {
@@ -84,6 +85,20 @@ public class GameManager : MonoBehaviour
             GameObject playerObj = Instantiate(playerPrefab, positions[i], rotations[i]);
             playerObj.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
             Player playerComp = playerObj.GetComponent<Player>();
+
+            // if (playerComp.name == "den")
+            // {
+            //     playerComp.defaultHand = playerComp.hand1d;
+            //     playerComp.grabbingHand = playerComp.hand1g;
+            // } else if (playerComp.name == "tamthe")
+            // {
+            //     playerComp.defaultHand = playerComp.hand2d;
+            //     playerComp.grabbingHand = playerComp.hand2g;
+            // } if (playerComp.name == "xiem")
+            // {
+            //     playerComp.defaultHand = playerComp.hand3d;
+            //     playerComp.grabbingHand = playerComp.hand3g;
+            // }
 
             // Set player data
             playerComp.Name = names[i];
