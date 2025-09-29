@@ -203,6 +203,26 @@ public class Player : MonoBehaviour
 
         Vector3 endPos = centerPile.transform.position;
 
+        float offset = 2f;
+        float zAngle = this.transform.rotation.eulerAngles.z;
+
+        if (Mathf.Approximately(zAngle, 90f)) 
+        {
+            endPos.x += offset;
+        } 
+        else if (Mathf.Approximately(zAngle, 180f)) 
+        {
+            endPos.y += offset;
+        }
+        else if (Mathf.Approximately(zAngle, 270f)) 
+        {
+            endPos.x -= offset;
+        } 
+        else 
+        {
+            endPos.y -= offset;
+        }
+
         float t = 0f;
         SetHandGrabbing(true);
 
