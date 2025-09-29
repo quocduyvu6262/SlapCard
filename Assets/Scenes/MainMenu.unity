@@ -1112,7 +1112,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 583968653923650342, guid: 05856c8c74d77ff4ea48363ba9eb93c3, type: 3}
+  m_Sprite: {fileID: -2304350949062730050, guid: eddcf8d13ef1e6a4584e63cb960255f8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1624,7 +1624,7 @@ PrefabInstance:
     - target: {fileID: 5411917430922058972, guid: f426eb3588c7a3d41b4891d927c9423c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 583968653923650342, guid: 05856c8c74d77ff4ea48363ba9eb93c3, type: 3}
+      objectReference: {fileID: -2304350949062730050, guid: eddcf8d13ef1e6a4584e63cb960255f8, type: 3}
     - target: {fileID: 5411917430922058972, guid: f426eb3588c7a3d41b4891d927c9423c, type: 3}
       propertyPath: m_Color.b
       value: 0.63529414
@@ -2024,7 +2024,7 @@ PrefabInstance:
     - target: {fileID: 5972546031950785740, guid: 2dc7b0b6478a1d1458d6ade5848f8660, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 583968653923650342, guid: 05856c8c74d77ff4ea48363ba9eb93c3, type: 3}
+      objectReference: {fileID: -2304350949062730050, guid: eddcf8d13ef1e6a4584e63cb960255f8, type: 3}
     - target: {fileID: 7883025289368110165, guid: 2dc7b0b6478a1d1458d6ade5848f8660, type: 3}
       propertyPath: m_Name
       value: exitButton
