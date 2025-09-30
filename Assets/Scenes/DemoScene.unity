@@ -856,6 +856,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1887442123}
+  - component: {fileID: 1887442125}
   - component: {fileID: 1887442124}
   m_Layer: 0
   m_Name: GameObject VideoPlayer
@@ -897,7 +898,7 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 0
+  m_DataSource: 1
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
@@ -915,6 +916,19 @@ VideoPlayer:
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
+--- !u!114 &1887442125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887442122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8ce271f732844340b4e3cf9884425ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VidPlayer
+  videoFileName: gameDemoNoSoundRendered.mp4
 --- !u!1 &2012457676
 GameObject:
   m_ObjectHideFlags: 0
