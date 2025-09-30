@@ -60,3 +60,7 @@ This project was brought to life by a team of four developers and one designer.
   <img src="Screenshots/winEndingScreenshot.png" alt="Screenshot 3" width="48%"/> 
 </p>
 
+## Play the Game 🎮  
+[Click here to play PurrfectTiming on Unity WebGL](https://play.unity.com/en/games/d600a884-3007-4974-9770-5fe88f24d1eb/slapcardbuild)  
+
+*Note: Best experienced on desktop with keyboard input.*
