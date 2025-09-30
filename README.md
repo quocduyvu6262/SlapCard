@@ -2,6 +2,16 @@
 
 *A fast-paced, reflex-based card game built in 48 hours for the Texas Game Jam 2025 – ATX Game Makers.*
 
+## Gameplay Demo
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=mxv_loC1v20">
+    <img src="Screenshots/logo.png" alt="Click to watch gameplay demo" width="180">
+  </a>
+</p>
+<p align="center">
+  <em>Click the thumbnail to watch the gameplay video on YouTube!</em>
+</p>
+
 ---
 
 ## How to Play
@@ -38,7 +48,15 @@ This is a game of speed! Cards are automatically played onto a central pile. You
 This project was brought to life by a team of four developers and one designer.
 
 * **Duy (Tony) Vu** - Project Lead, Gameplay Programmer
-* **Nghi Lam** - Gameplay Programmer
+* **Tran Lam** - Gameplay Programmer
 * **Uyen Tran** - Art & Animation
 * **Quang Huy Le** - Sound Designer, Gameplay Programmer
 * **Minh Nguyen** - UI Programmer
+
+## Screenshots
+<p align="center">
+  <img src="Screenshots/instructionSceneScreenshot.png" alt="Screenshot 1" width="48%"/>
+  <img src="Screenshots/gamePlayScreenshot.png" alt="Screenshot 2" width="48%"/>
+  <img src="Screenshots/winEndingScreenshot.png" alt="Screenshot 3" width="48%"/> 
+</p>
+
