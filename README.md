@@ -2,6 +2,8 @@
 
 *A fast-paced, reflex-based card game built in 48 hours for the Texas Game Jam 2025 – ATX Game Makers.*
 
+*[View our official Texas Game Jam 2025 submission](https://itch.io/jam/texas-game-jam-2025/rate/3918782)*
+
 ## Gameplay Demo
 <p align="center">
   <a href="https://www.youtube.com/watch?v=mxv_loC1v20" target="_blank" rel="noopener noreferrer">
