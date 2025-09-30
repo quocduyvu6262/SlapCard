@@ -58,7 +58,7 @@ This project was brought to life by a team of four developers and one designer.
 * **Tran Lam** - Gameplay Programmer
 * **Uyen Tran** - Art & Animation
 * **Quang Huy Le** - Sound Designer, Gameplay Programmer
-* **Minh Nguyen** - UI Programmer
+* **Minh Nguyen** - UI Designer, Gameplay Programmer
 
 ## Screenshots
 <p align="center">
