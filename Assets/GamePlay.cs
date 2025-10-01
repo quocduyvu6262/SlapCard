@@ -42,9 +42,11 @@ public class GamePlay : MonoBehaviour
     private bool isSlapping = false;
 
     [Header("UI Feedback")]
-    public GameObject floatingTextPrefab; // The prefab you just created
+    public GameObject floatingTextPrefab; 
     public Transform worldCanvas;         // The World Space Canvas
 
+    public float hardMode = 0.07f;
+    public float normalMode = 0.5f;
 
     void Awake()
     {
@@ -58,6 +60,14 @@ public class GamePlay : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (GameSettings.selectedDifficulty == GameSettings.Difficulty.Hard)
+        {
+            playSpeed = hardMode; 
+        }
+        else
+        {
+            playSpeed = normalMode; 
+        }
         currentLives = maxLives;
         if (heartPrefab != null)
         {

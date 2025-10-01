@@ -103,6 +103,19 @@ public class GameManager : MonoBehaviour
             // Set player data
             playerComp.Name = names[i];
             playerComp.IsBot = isBot[i];
+
+            if (playerComp.IsBot)
+            {
+                if (GameSettings.selectedDifficulty == GameSettings.Difficulty.Hard)
+                {
+                    playerComp.botReactionTime = 0.5f; // Hard difficulty reaction time
+                }
+                else
+                {
+                    playerComp.botReactionTime = 1f; // Normal difficulty reaction time
+                }
+            }
+
             playerComp.BasePosition = positions[i];
             playerComp.BaseRotation = rotations[i];
 
