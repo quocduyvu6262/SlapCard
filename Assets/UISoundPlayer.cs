@@ -35,7 +35,6 @@ public class UISoundPlayer : MonoBehaviour
         }
     }
 
-    // --- ADD THIS NEW FUNCTION AND COROUTINE ---
     public void PlayClickAndLoadScene(string sceneName)
     {
         StartCoroutine(LoadSceneAfterSound(sceneName));
@@ -43,16 +42,13 @@ public class UISoundPlayer : MonoBehaviour
 
     private IEnumerator LoadSceneAfterSound(string sceneName)
     {
-        // 1. Play the click sound
         if (buttonClickSound != null)
         {
             audioSource.PlayOneShot(buttonClickSound);
         }
 
-        // 2. Wait for the sound to finish playing
         yield return new WaitForSeconds(buttonClickSound.length);
 
-        // 3. Load the new scene
         SceneManager.LoadScene(sceneName);
     }
 }
