@@ -6,7 +6,7 @@
 
 ## Gameplay Demo
 <p align="center">
-  <a href="https://www.youtube.com/watch?v=mxv_loC1v20" target="_blank" rel="noopener noreferrer">
+  <a href="https://youtu.be/7lOX7OIsFr0" target="_blank" rel="noopener noreferrer">
     <img src="Screenshots/logo.png" alt="Click to watch gameplay demo" width="180">
   </a>
 </p>
